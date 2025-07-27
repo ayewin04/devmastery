@@ -1,0 +1,4704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevMastery - Learn Programming Principles</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>DevMastery</h1>
+            
+            <p>Master the fundamentals of software development</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#" class="active" data-section="home">Home</a></li>
+                <li><a href="#" data-section="solid">SOLID Principles</a></li>
+                <li><a href="#" data-section="http">HTTP Status Codes</a></li>
+                <li><a href="#" data-section="agile">Agile Methods</a></li>
+                <li><a href="#" data-section="oop">OOP</a></li>
+                <li><a href="#" data-section="design-principles">Design Principles</a></li>
+                <li><a href="#" data-section="methodologies">Development Methodologies</a></li>
+                <li><a href="#" data-section="web-dev">Web Dev Techniques</a></li>
+                <li><a href="#" data-section="performance">Performance & Optimization</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Home Section -->
+        <section id="home" class="content-section active">
+            <h2>Welcome to DevMastery</h2>
+            <p>Your comprehensive resource for mastering fundamental software development principles and methodologies.</p>
+            
+            <div class="card-container">
+                <div class="card" data-section="solid">
+                    <h3>SOLID Principles</h3>
+                    <p>Five design principles intended to make software designs more understandable, flexible, and maintainable.</p>
+                    <button class="btn">Start Learning</button>
+                </div>
+                
+                <div class="card" data-section="http">
+                    <h3>HTTP Status Codes</h3>
+                    <p>Learn all about HTTP response status codes and what they mean for web development.</p>
+                    <button class="btn">Start Learning</button>
+                </div>
+                
+                <div class="card" data-section="agile">
+                    <h3>Agile Methods</h3>
+                    <p>Discover various Agile methodologies like Scrum, Kanban, and XP for efficient software development.</p>
+                    <button class="btn">Start Learning</button>
+                </div>
+                
+                <div class="card" data-section="oop">
+                    <h3>Object-Oriented Programming</h3>
+                    <p>Master the four pillars of OOP and design patterns for robust software architecture.</p>
+                    <button class="btn">Start Learning</button>
+                </div>
+                <div class="card" data-section="design-principles">
+                    <h3>Design Principles</h3>
+                    <p>Master the Design Principles every developer should know when developing software.</p>
+                    <button class="btn">Start Learning</button>
+                </div>
+                <div class="card" data-section="methodologies">
+                    <h3>Development Methodologies</h3>
+                    <p>Master the Development Methodologies every developer should know when developing software.</p>
+                    <button class="btn">Start Learning</button>
+                </div>
+                <div class="card" data-section="web-dev">
+                    <h3>Web Dev Techniques</h3>
+                    <p>Master the Web Dev Techniques every developer should know when developing software.</p>
+                    <button class="btn">Start Learning</button>
+                </div>
+                <div class="card" data-section="performance">
+                    <h3>Performance & Optimization</h3>
+                    <p>Master the Performance & Optimization every developer should know when developing software.</p>
+                    <button class="btn">Start Learning</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOLID Principles Section -->
+        <section id="solid" class="content-section">
+            <h2>SOLID Principles</h2>
+            <p class="section-intro">SOLID is an acronym for five design principles intended to make software designs more understandable, flexible, and maintainable.</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Single Responsibility Principle (SRP)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>A class should have only one reason to change, meaning it should have only one job or responsibility.</p>
+                        <h4>Key Concepts:</h4>
+                        <ul>
+                            <li>Separation of concerns</li>
+                            <li>High cohesion</li>
+                            <li>Reduced side effects</li>
+                        </ul>
+                        <h4>Examples:</h4>
+                        <pre><code>// Bad: Class with multiple responsibilities
+class User {
+    constructor(name, email) {
+        this.name = name;
+        this.email = email;
+    }
+
+    saveToDatabase() {
+        // Database logic
+    }
+
+    sendEmail() {
+        // Email sending logic
+    }
+}
+
+// Good: Separate responsibilities
+class User {
+    constructor(name, email) {
+        this.name = name;
+        this.email = email;
+    }
+}
+
+class UserRepository {
+    save(user) {
+        // Database logic
+    }
+}
+
+class EmailService {
+    send(user, message) {
+        // Email sending logic
+    }
+}</code></pre>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Open/Closed Principle (OCP)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Software entities should be open for extension but closed for modification.</p>
+                        <h4>Key Concepts:</h4>
+                        <ul>
+                            <li>Use abstraction</li>
+                            <li>Implement interfaces</li>
+                            <li>Strategy pattern</li>
+                        </ul>
+                        <h4>Examples:</h4>
+                        <pre><code>// Bad: Modifying existing class for new shapes
+class AreaCalculator {
+    calculate(shapes) {
+        let area = 0;
+        shapes.forEach(shape => {
+            if (shape.type === 'rectangle') {
+                area += shape.width * shape.height;
+            } else if (shape.type === 'circle') {
+                area += Math.PI * shape.radius * shape.radius;
+            }
+            // Adding new shape requires modification
+        });
+        return area;
+    }
+}
+
+// Good: Open for extension
+class Shape {
+    area() {
+        throw new Error('Method not implemented');
+    }
+}
+
+class Rectangle extends Shape {
+    constructor(width, height) {
+        super();
+        this.width = width;
+        this.height = height;
+    }
+    
+    area() {
+        return this.width * this.height;
+    }
+}
+
+class Circle extends Shape {
+    constructor(radius) {
+        super();
+        this.radius = radius;
+    }
+    
+    area() {
+        return Math.PI * this.radius * this.radius;
+    }
+}
+
+class AreaCalculator {
+    calculate(shapes) {
+        return shapes.reduce((sum, shape) => sum + shape.area(), 0);
+    }
+}</code></pre>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Liskov Substitution Principle (LSP)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Objects of a superclass should be replaceable with objects of its subclasses without breaking the application.</p>
+                        <h4>Key Concepts:</h4>
+                        <ul>
+                            <li>Behavioral subtyping</li>
+                            <li>Design by contract</li>
+                            <li>Preconditions and postconditions</li>
+                        </ul>
+                        <h4>Examples:</h4>
+                        <pre><code>// Bad: Violates LSP
+class Rectangle {
+    constructor(width, height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    setWidth(width) {
+        this.width = width;
+    }
+
+    setHeight(height) {
+        this.height = height;
+    }
+
+    area() {
+        return this.width * this.height;
+    }
+}
+
+class Square extends Rectangle {
+    constructor(size) {
+        super(size, size);
+    }
+
+    setWidth(width) {
+        this.width = width;
+        this.height = width;
+    }
+
+    setHeight(height) {
+        this.width = height;
+        this.height = height;
+    }
+}
+
+function testArea(rectangle) {
+    rectangle.setWidth(5);
+    rectangle.setHeight(4);
+    return rectangle.area(); // Expects 20, but for Square returns 16
+}
+
+// Good: Separate classes or interface
+class Shape {
+    area() {
+        throw new Error('Method not implemented');
+    }
+}
+
+class Rectangle extends Shape {
+    constructor(width, height) {
+        super();
+        this.width = width;
+        this.height = height;
+    }
+    
+    area() {
+        return this.width * this.height;
+    }
+}
+
+class Square extends Shape {
+    constructor(size) {
+        super();
+        this.size = size;
+    }
+    
+    area() {
+        return this.size * this.size;
+    }
+}</code></pre>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Interface Segregation Principle (ISP)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Clients should not be forced to depend on interfaces they do not use.</p>
+                        <h4>Key Concepts:</h4>
+                        <ul>
+                            <li>Role interfaces</li>
+                            <li>Avoid fat interfaces</li>
+                            <li>Client-specific interfaces</li>
+                        </ul>
+                        <h4>Examples:</h4>
+                        <pre><code>// Bad: Fat interface
+class Worker {
+    work() {
+        // work logic
+    }
+    
+    eat() {
+        // eat logic
+    }
+}
+
+class HumanWorker extends Worker {
+    work() {
+        console.log("Human working");
+    }
+    
+    eat() {
+        console.log("Human eating");
+    }
+}
+
+class RobotWorker extends Worker {
+    work() {
+        console.log("Robot working");
+    }
+    
+    eat() {
+        throw new Error("Robot can't eat");
+    }
+}
+
+// Good: Segregated interfaces
+class Workable {
+    work() {
+        throw new Error('Method not implemented');
+    }
+}
+
+class Eatable {
+    eat() {
+        throw new Error('Method not implemented');
+    }
+}
+
+class HumanWorker extends Workable, Eatable {
+    work() {
+        console.log("Human working");
+    }
+    
+    eat() {
+        console.log("Human eating");
+    }
+}
+
+class RobotWorker extends Workable {
+    work() {
+        console.log("Robot working");
+    }
+}</code></pre>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Dependency Inversion Principle (DIP)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>High-level modules should not depend on low-level modules. Both should depend on abstractions.</p>
+                        <h4>Key Concepts:</h4>
+                        <ul>
+                            <li>Dependency injection</li>
+                            <li>Inversion of control</li>
+                            <li>Abstractions should not depend on details</li>
+                        </ul>
+                        <h4>Examples:</h4>
+                        <pre><code>// Bad: High-level module depends on low-level module
+class LightBulb {
+    turnOn() {
+        console.log("Light bulb turned on");
+    }
+    
+    turnOff() {
+        console.log("Light bulb turned off");
+    }
+}
+
+class Switch {
+    constructor(bulb) {
+        this.bulb = bulb;
+    }
+    
+    operate() {
+        if (/* some condition */) {
+            this.bulb.turnOn();
+        } else {
+            this.bulb.turnOff();
+        }
+    }
+}
+
+// Good: Both depend on abstraction
+class Switchable {
+    turnOn() {
+        throw new Error('Method not implemented');
+    }
+    
+    turnOff() {
+        throw new Error('Method not implemented');
+    }
+}
+
+class LightBulb extends Switchable {
+    turnOn() {
+        console.log("Light bulb turned on");
+    }
+    
+    turnOff() {
+        console.log("Light bulb turned off");
+    }
+}
+
+class Fan extends Switchable {
+    turnOn() {
+        console.log("Fan turned on");
+    }
+    
+    turnOff() {
+        console.log("Fan turned off");
+    }
+}
+
+class Switch {
+    constructor(device) {
+        this.device = device;
+    }
+    
+    operate() {
+        if (/* some condition */) {
+            this.device.turnOn();
+        } else {
+            this.device.turnOff();
+        }
+    }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-resource">
+                <h3>Video Explanation</h3>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/rtmFCcjEgEw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- HTTP Status Codes Section -->
+        <section id="http" class="content-section">
+            <h2>HTTP Status Codes</h2>
+            <p class="section-intro">HTTP response status codes indicate whether a specific HTTP request has been successfully completed.</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>1xx - Informational Responses</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>The request was received, continuing process.</p>
+                        <table>
+                            <tr>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr>
+                                <td>100</td>
+                                <td>Continue</td>
+                                <td>The server has received the request headers and the client should proceed to send the request body.</td>
+                            </tr>
+                            <tr>
+                                <td>101</td>
+                                <td>Switching Protocols</td>
+                                <td>The requester has asked the server to switch protocols and the server has agreed.</td>
+                            </tr>
+                            <tr>
+                                <td>102</td>
+                                <td>Processing</td>
+                                <td>The server has received and is processing the request, but no response is available yet.</td>
+                            </tr>
+                            <tr>
+                                <td>103</td>
+                                <td>Early Hints</td>
+                                <td>Used to return some response headers before final HTTP message.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>2xx - Successful Responses</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>The request was successfully received, understood, and accepted.</p>
+                        <table>
+                            <tr>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr>
+                                <td>200</td>
+                                <td>OK</td>
+                                <td>The request has succeeded.</td>
+                            </tr>
+                            <tr>
+                                <td>201</td>
+                                <td>Created</td>
+                                <td>The request has been fulfilled and resulted in a new resource being created.</td>
+                            </tr>
+                            <tr>
+                                <td>202</td>
+                                <td>Accepted</td>
+                                <td>The request has been accepted for processing, but the processing has not been completed.</td>
+                            </tr>
+                            <tr>
+                                <td>204</td>
+                                <td>No Content</td>
+                                <td>The server successfully processed the request and is not returning any content.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>3xx - Redirection Messages</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Further action needs to be taken in order to complete the request.</p>
+                        <table>
+                            <tr>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr>
+                                <td>301</td>
+                                <td>Moved Permanently</td>
+                                <td>This and all future requests should be directed to the given URI.</td>
+                            </tr>
+                            <tr>
+                                <td>302</td>
+                                <td>Found</td>
+                                <td>The resource was found but at a different URI.</td>
+                            </tr>
+                            <tr>
+                                <td>304</td>
+                                <td>Not Modified</td>
+                                <td>Indicates that the resource has not been modified since the version specified.</td>
+                            </tr>
+                            <tr>
+                                <td>307</td>
+                                <td>Temporary Redirect</td>
+                                <td>The request should be repeated with another URI, but future requests should still use the original URI.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>4xx - Client Error Responses</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>The request contains bad syntax or cannot be fulfilled.</p>
+                        <table>
+                            <tr>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr>
+                                <td>400</td>
+                                <td>Bad Request</td>
+                                <td>The server cannot or will not process the request due to an apparent client error.</td>
+                            </tr>
+                            <tr>
+                                <td>401</td>
+                                <td>Unauthorized</td>
+                                <td>Authentication is required and has failed or has not yet been provided.</td>
+                            </tr>
+                            <tr>
+                                <td>403</td>
+                                <td>Forbidden</td>
+                                <td>The request was valid, but the server is refusing action.</td>
+                            </tr>
+                            <tr>
+                                <td>404</td>
+                                <td>Not Found</td>
+                                <td>The requested resource could not be found but may be available in the future.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>5xx - Server Error Responses</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>The server failed to fulfill an apparently valid request.</p>
+                        <table>
+                            <tr>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr>
+                                <td>500</td>
+                                <td>Internal Server Error</td>
+                                <td>A generic error message, given when an unexpected condition was encountered.</td>
+                            </tr>
+                            <tr>
+                                <td>501</td>
+                                <td>Not Implemented</td>
+                                <td>The server either does not recognize the request method, or it lacks the ability to fulfill the request.</td>
+                            </tr>
+                            <tr>
+                                <td>502</td>
+                                <td>Bad Gateway</td>
+                                <td>The server was acting as a gateway or proxy and received an invalid response from the upstream server.</td>
+                            </tr>
+                            <tr>
+                                <td>503</td>
+                                <td>Service Unavailable</td>
+                                <td>The server is currently unavailable (because it is overloaded or down for maintenance).</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-resource">
+                <h3>Video Explanation</h3>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/GrNrcmD6HLA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Agile Methods Section -->
+        <section id="agile" class="content-section">
+            <h2>Agile Methods</h2>
+            <p class="section-intro">Agile is an iterative approach to project management and software development that helps teams deliver value faster and with fewer headaches.</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Agile Manifesto and Principles</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>The Agile Manifesto Values:</h4>
+                        <ol>
+                            <li><strong>Individuals and interactions</strong> over processes and tools</li>
+                            <li><strong>Working software</strong> over comprehensive documentation</li>
+                            <li><strong>Customer collaboration</strong> over contract negotiation</li>
+                            <li><strong>Responding to change</strong> over following a plan</li>
+                        </ol>
+                        
+                        <h4>The 12 Agile Principles:</h4>
+                        <ol>
+                            <li>Our highest priority is to satisfy the customer through early and continuous delivery of valuable software.</li>
+                            <li>Welcome changing requirements, even late in development.</li>
+                            <li>Deliver working software frequently, from a couple of weeks to a couple of months, with a preference to the shorter timescale.</li>
+                            <li>Business people and developers must work together daily throughout the project.</li>
+                            <li>Build projects around motivated individuals. Give them the environment and support they need, and trust them to get the job done.</li>
+                            <li>The most efficient and effective method of conveying information to and within a development team is face-to-face conversation.</li>
+                            <li>Working software is the primary measure of progress.</li>
+                            <li>Agile processes promote sustainable development. The sponsors, developers, and users should be able to maintain a constant pace indefinitely.</li>
+                            <li>Continuous attention to technical excellence and good design enhances agility.</li>
+                            <li>Simplicity—the art of maximizing the amount of work not done—is essential.</li>
+                            <li>The best architectures, requirements, and designs emerge from self-organizing teams.</li>
+                            <li>At regular intervals, the team reflects on how to become more effective, then tunes and adjusts its behavior accordingly.</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Scrum Methodology</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Scrum is an agile framework for developing, delivering, and sustaining complex products.</p>
+                        
+                        <h4>Key Components:</h4>
+                        <ul>
+                            <li><strong>Roles:</strong> Product Owner, Scrum Master, Development Team</li>
+                            <li><strong>Artifacts:</strong> Product Backlog, Sprint Backlog, Increment</li>
+                            <li><strong>Events:</strong> Sprint, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective</li>
+                        </ul>
+                        
+                        <h4>Scrum Process Flow:</h4>
+                        <ol>
+                            <li><strong>Product Backlog Creation:</strong> The Product Owner creates and prioritizes the product backlog.</li>
+                            <li><strong>Sprint Planning:</strong> The team selects items from the product backlog to work on during the sprint.</li>
+                            <li><strong>Sprint Execution:</strong> The team works on the sprint backlog items during the sprint (typically 2-4 weeks).</li>
+                            <li><strong>Daily Scrum:</strong> A 15-minute daily meeting to synchronize work and plan for the next 24 hours.</li>
+                            <li><strong>Sprint Review:</strong> At the end of the sprint, the team demonstrates the completed work to stakeholders.</li>
+                            <li><strong>Sprint Retrospective:</strong> The team reflects on the sprint and identifies improvements for the next sprint.</li>
+                        </ol>
+                        
+                        <h4>Benefits of Scrum:</h4>
+                        <ul>
+                            <li>Increased transparency and project visibility</li>
+                            <li>Early and predictable delivery</li>
+                            <li>Predictable costs and schedule</li>
+                            <li>Allows for change and flexibility</li>
+                            <li>Improved team dynamics</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Kanban Methodology</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Kanban is a visual system for managing work as it moves through a process.</p>
+                        
+                        <h4>Key Principles:</h4>
+                        <ol>
+                            <li><strong>Visualize the Workflow:</strong> Use a Kanban board to visualize work items and their progress.</li>
+                            <li><strong>Limit Work in Progress (WIP):</strong> Set explicit limits on how many items can be in progress at each workflow state.</li>
+                            <li><strong>Manage Flow:</strong> Monitor, measure, and improve the flow of work through the system.</li>
+                            <li><strong>Make Process Policies Explicit:</strong> Clearly define and communicate how work is handled at each stage.</li>
+                            <li><strong>Implement Feedback Loops:</strong> Use metrics and meetings to review and improve the process.</li>
+                            <li><strong>Improve Collaboratively, Evolve Experimentally:</strong> Continuously improve the process through small, incremental changes.</li>
+                        </ol>
+                        
+                        <h4>Kanban Board Example:</h4>
+                        <div class="kanban-example">
+                            <div class="kanban-column">
+                                <h5>Backlog</h5>
+                                <div class="kanban-card">Feature A</div>
+                                <div class="kanban-card">Feature B</div>
+                                <div class="kanban-card">Feature C</div>
+                            </div>
+                            <div class="kanban-column">
+                                <h5>To Do</h5>
+                                <div class="kanban-card">Feature D</div>
+                                <div class="kanban-card">Feature E</div>
+                            </div>
+                            <div class="kanban-column">
+                                <h5>In Progress</h5>
+                                <div class="kanban-card">Feature F</div>
+                            </div>
+                            <div class="kanban-column">
+                                <h5>Done</h5>
+                                <div class="kanban-card">Feature G</div>
+                                <div class="kanban-card">Feature H</div>
+                            </div>
+                        </div>
+                        
+                        <h4>Benefits of Kanban:</h4>
+                        <ul>
+                            <li>Increased visibility of work and workflow</li>
+                            <li>Flexibility to change priorities as needed</li>
+                            <li>Focus on continuous delivery</li>
+                            <li>Reduced cycle time</li>
+                            <li>Improved efficiency and productivity</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Extreme Programming (XP)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Extreme Programming (XP) is an agile software development framework that aims to produce higher quality software, and higher quality of life for the development team.</p>
+                        
+                        <h4>XP Values:</h4>
+                        <ul>
+                            <li><strong>Communication:</strong> Team members communicate continuously.</li>
+                            <li><strong>Simplicity:</strong> Start with the simplest solution that works.</li>
+                            <li><strong>Feedback:</strong> Get feedback from the system, customers, and team.</li>
+                            <li><strong>Courage:</strong> Courage to make and admit mistakes, and to change when needed.</li>
+                            <li><strong>Respect:</strong> Respect for all team members and stakeholders.</li>
+                        </ul>
+                        
+                        <h4>XP Practices:</h4>
+                        <div class="xp-practices">
+                            <div class="xp-practice">
+                                <h5>Pair Programming</h5>
+                                <p>Two programmers work together at one workstation, continuously reviewing code.</p>
+                            </div>
+                            <div class="xp-practice">
+                                <h5>Test-Driven Development (TDD)</h5>
+                                <p>Write tests before writing the code to satisfy those tests.</p>
+                            </div>
+                            <div class="xp-practice">
+                                <h5>Continuous Integration</h5>
+                                <p>Integrate and test code changes frequently (several times a day).</p>
+                            </div>
+                            <div class="xp-practice">
+                                <h5>Refactoring</h5>
+                                <p>Continuously improve the design of the code without changing its behavior.</p>
+                            </div>
+                            <div class="xp-practice">
+                                <h5>Small Releases</h5>
+                                <p>Release software in small, frequent increments.</p>
+                            </div>
+                            <div class="xp-practice">
+                                <h5>Collective Ownership</h5>
+                                <p>Anyone can change any code anywhere in the system at any time.</p>
+                            </div>
+                        </div>
+                        
+                        <h4>When to Use XP:</h4>
+                        <ul>
+                            <li>When requirements are dynamic and change frequently</li>
+                            <li>When the technology is new and risks are high</li>
+                            <li>When the team is small and co-located</li>
+                            <li>When quality and reliability are critical</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Lean Software Development</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Lean software development is an iterative agile methodology that focuses on delivering value to the customer through efficient value stream mapping.</p>
+                        
+                        <h4>Lean Principles:</h4>
+                        <ol>
+                            <li><strong>Eliminate Waste:</strong> Remove anything that doesn't add value to the customer.</li>
+                            <li><strong>Amplify Learning:</strong> Encourage continuous learning through short feedback loops.</li>
+                            <li><strong>Decide as Late as Possible:</strong> Keep options open as long as practical.</li>
+                            <li><strong>Deliver as Fast as Possible:</strong> Reduce cycle time to deliver value quickly.</li>
+                            <li><strong>Empower the Team:</strong> Trust the team to make decisions and solve problems.</li>
+                            <li><strong>Build Integrity In:</strong> Ensure quality is built into the product from the start.</li>
+                            <li><strong>See the Whole:</strong> Optimize the entire value stream, not just parts.</li>
+                        </ol>
+                        
+                        <h4>Types of Waste in Software Development:</h4>
+                        <table>
+                            <tr>
+                                <th>Type of Waste</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr>
+                                <td>Partially Done Work</td>
+                                <td>Work that's been started but not completed and delivered</td>
+                            </tr>
+                            <tr>
+                                <td>Extra Features</td>
+                                <td>Features that are built but never used by customers</td>
+                            </tr>
+                            <tr>
+                                <td>Relearning</td>
+                                <td>Time spent relearning things due to knowledge loss</td>
+                            </tr>
+                            <tr>
+                                <td>Handoffs</td>
+                                <td>Delays and information loss when work is transferred</td>
+                            </tr>
+                            <tr>
+                                <td>Delays</td>
+                                <td>Waiting time between process steps</td>
+                            </tr>
+                            <tr>
+                                <td>Task Switching</td>
+                                <td>Context switching between different tasks</td>
+                            </tr>
+                            <tr>
+                                <td>Defects</td>
+                                <td>Time spent finding and fixing bugs</td>
+                            </tr>
+                        </table>
+                        
+                        <h4>Lean Tools and Techniques:</h4>
+                        <ul>
+                            <li><strong>Value Stream Mapping:</strong> Visualize the flow of work to identify waste.</li>
+                            <li><strong>Kanban:</strong> Visualize and limit work in progress.</li>
+                            <li><strong>Continuous Improvement (Kaizen):</strong> Small, incremental improvements.</li>
+                            <li><strong>Root Cause Analysis:</strong> Identify and address the underlying causes of problems.</li>
+                            <li><strong>Pull Systems:</strong> Work is pulled based on demand rather than pushed.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-resource">
+                <h3>Video Explanation</h3>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Z9QbYZh1YXY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- OOP Section -->
+        <section id="oop" class="content-section">
+            <h2>Object-Oriented Programming</h2>
+            <p class="section-intro">Object-oriented programming (OOP) is a programming paradigm based on the concept of "objects", which can contain data and code.</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>The Four Pillars of OOP</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="pillars-container">
+                            <div class="pillar">
+                                <h4>Encapsulation</h4>
+                                <p>Bundling of data with the methods that operate on that data, restricting direct access to some of an object's components.</p>
+                                <pre><code>class BankAccount {
+    private balance: number;
+    
+    constructor(initialBalance: number) {
+        this.balance = initialBalance;
+    }
+    
+    deposit(amount: number) {
+        if (amount > 0) {
+            this.balance += amount;
+        }
+    }
+    
+    withdraw(amount: number) {
+        if (amount > 0 && amount <= this.balance) {
+            this.balance -= amount;
+            return amount;
+        }
+        return 0;
+    }
+    
+    getBalance() {
+        return this.balance;
+    }
+}</code></pre>
+                            </div>
+                            
+                            <div class="pillar">
+                                <h4>Abstraction</h4>
+                                <p>Hiding complex implementation details and showing only the necessary features of an object.</p>
+                                <pre><code>interface Vehicle {
+    startEngine(): void;
+    stopEngine(): void;
+    move(): void;
+}
+
+class Car implements Vehicle {
+    startEngine() {
+        // Complex engine start logic
+        console.log("Car engine started");
+    }
+    
+    stopEngine() {
+        // Complex engine stop logic
+        console.log("Car engine stopped");
+    }
+    
+    move() {
+        this.startEngine();
+        // Complex movement logic
+        console.log("Car is moving");
+    }
+}
+
+// User only needs to know about move()
+const myCar = new Car();
+myCar.move();</code></pre>
+                            </div>
+                            
+                            <div class="pillar">
+                                <h4>Inheritance</h4>
+                                <p>Creating new classes based on existing ones, inheriting their attributes and behaviors.</p>
+                                <pre><code>class Animal {
+    constructor(public name: string) {}
+    
+    makeSound() {
+        console.log("Some generic animal sound");
+    }
+}
+
+class Dog extends Animal {
+    constructor(name: string) {
+        super(name);
+    }
+    
+    makeSound() {
+        console.log("Woof! Woof!");
+    }
+    
+    wagTail() {
+        console.log(`${this.name} is wagging its tail`);
+    }
+}
+
+const myDog = new Dog("Buddy");
+myDog.makeSound(); // "Woof! Woof!"
+myDog.wagTail();  // "Buddy is wagging its tail"</code></pre>
+                            </div>
+                            
+                            <div class="pillar">
+                                <h4>Polymorphism</h4>
+                                <p>Ability of objects to take on many forms, typically through method overriding or interfaces.</p>
+                                <pre><code>class Shape {
+    area(): number {
+        return 0;
+    }
+}
+
+class Circle extends Shape {
+    constructor(private radius: number) {
+        super();
+    }
+    
+    area(): number {
+        return Math.PI * this.radius * this.radius;
+    }
+}
+
+class Square extends Shape {
+    constructor(private side: number) {
+        super();
+    }
+    
+    area(): number {
+        return this.side * this.side;
+    }
+}
+
+function printArea(shape: Shape) {
+    console.log(`Area: ${shape.area()}`);
+}
+
+const circle = new Circle(5);
+const square = new Square(4);
+
+printArea(circle); // Area: 78.53981633974483
+printArea(square); // Area: 16</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Classes and Objects</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Classes:</h4>
+                        <p>A class is a blueprint for creating objects (a particular data structure), providing initial values for state (member variables or attributes), and implementations of behavior (member functions or methods).</p>
+                        
+                        <h4>Objects:</h4>
+                        <p>An object is an instance of a class, containing data and behavior defined by the class.</p>
+                        
+                        <h4>Example:</h4>
+                        <pre><code>// Class definition
+class Person {
+    // Properties
+    name: string;
+    age: number;
+    
+    // Constructor
+    constructor(name: string, age: number) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    // Method
+    greet() {
+        console.log(`Hello, my name is ${this.name} and I'm ${this.age} years old.`);
+    }
+}
+
+// Creating objects (instances of the class)
+const person1 = new Person("Alice", 30);
+const person2 = new Person("Bob", 25);
+
+// Using object methods
+person1.greet(); // "Hello, my name is Alice and I'm 30 years old."
+person2.greet(); // "Hello, my name is Bob and I'm 25 years old."</code></pre>
+                        
+                        <h4>Class Components:</h4>
+                        <table>
+                            <tr>
+                                <th>Component</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                            <tr>
+                                <td>Properties/Fields</td>
+                                <td>Variables that hold data for each object</td>
+                                <td><code>name: string;</code></td>
+                            </tr>
+                            <tr>
+                                <td>Constructor</td>
+                                <td>Special method called when creating an object</td>
+                                <td><code>constructor(name: string) { ... }</code></td>
+                            </tr>
+                            <tr>
+                                <td>Methods</td>
+                                <td>Functions that define object behavior</td>
+                                <td><code>greet() { ... }</code></td>
+                            </tr>
+                            <tr>
+                                <td>Access Modifiers</td>
+                                <td>Control visibility of members (public, private, protected)</td>
+                                <td><code>private age: number;</code></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Design Patterns</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Design patterns are typical solutions to common problems in software design. They are like pre-made blueprints that can be customized to solve a particular design problem.</p>
+                        
+                        <h4>Creational Patterns:</h4>
+                        <div class="pattern-grid">
+                            <div class="pattern">
+                                <h5>Singleton</h5>
+                                <p>Ensures a class has only one instance and provides a global point of access to it.</p>
+                                <pre><code>class Database {
+    private static instance: Database;
+    
+    private constructor() {}
+    
+    public static getInstance(): Database {
+        if (!Database.instance) {
+            Database.instance = new Database();
+        }
+        return Database.instance;
+    }
+    
+    query(sql: string) {
+        // Execute query
+    }
+}
+
+const db1 = Database.getInstance();
+const db2 = Database.getInstance();
+console.log(db1 === db2); // true</code></pre>
+                            </div>
+                            
+                            <div class="pattern">
+                                <h5>Factory Method</h5>
+                                <p>Provides an interface for creating objects in a superclass, but allows subclasses to alter the type of objects that will be created.</p>
+                                <pre><code>abstract class Dialog {
+    abstract createButton(): Button;
+    
+    render() {
+        const button = this.createButton();
+        button.onClick("closeDialog");
+        button.render();
+    }
+}
+
+class WindowsDialog extends Dialog {
+    createButton(): Button {
+        return new WindowsButton();
+    }
+}
+
+class WebDialog extends Dialog {
+    createButton(): Button {
+        return new HTMLButton();
+    }
+}
+
+interface Button {
+    render(): void;
+    onClick(f: string): void;
+}</code></pre>
+                            </div>
+                        </div>
+                        
+                        <h4>Structural Patterns:</h4>
+                        <div class="pattern-grid">
+                            <div class="pattern">
+                                <h5>Adapter</h5>
+                                <p>Allows objects with incompatible interfaces to collaborate.</p>
+                                <pre><code>// Existing interface
+interface LightningPhone {
+    useLightning(): void;
+    recharge(): void;
+}
+
+// New interface we need to adapt to
+interface MicroUSBPhone {
+    useMicroUSB(): void;
+    recharge(): void;
+}
+
+// Adapter class
+class LightningToMicroUSBAdapter implements MicroUSBPhone {
+    constructor(private lightningPhone: LightningPhone) {}
+    
+    useMicroUSB() {
+        this.lightningPhone.useLightning();
+    }
+    
+    recharge() {
+        this.lightningPhone.recharge();
+    }
+}</code></pre>
+                            </div>
+                            
+                            <div class="pattern">
+                                <h5>Decorator</h5>
+                                <p>Lets you attach new behaviors to objects by placing these objects inside special wrapper objects.</p>
+                                <pre><code>interface Coffee {
+    cost(): number;
+    description(): string;
+}
+
+class SimpleCoffee implements Coffee {
+    cost() { return 5; }
+    description() { return "Simple coffee"; }
+}
+
+class MilkDecorator implements Coffee {
+    constructor(private coffee: Coffee) {}
+    
+    cost() { return this.coffee.cost() + 2; }
+    description() { return `${this.coffee.description()}, milk`; }
+}
+
+class WhipDecorator implements Coffee {
+    constructor(private coffee: Coffee) {}
+    
+    cost() { return this.coffee.cost() + 3; }
+    description() { return `${this.coffee.description()}, whip`; }
+}
+
+let coffee: Coffee = new SimpleCoffee();
+coffee = new MilkDecorator(coffee);
+coffee = new WhipDecorator(coffee);
+
+console.log(coffee.description()); // "Simple coffee, milk, whip"
+console.log(coffee.cost()); // 10</code></pre>
+                            </div>
+                        </div>
+                        
+                        <h4>Behavioral Patterns:</h4>
+                        <div class="pattern-grid">
+                            <div class="pattern">
+                                <h5>Observer</h5>
+                                <p>Lets you define a subscription mechanism to notify multiple objects about any events that happen to the object they're observing.</p>
+                                <pre><code>interface Observer {
+    update(data: any): void;
+}
+
+class Subject {
+    private observers: Observer[] = [];
+    
+    addObserver(observer: Observer) {
+        this.observers.push(observer);
+    }
+    
+    removeObserver(observer: Observer) {
+        const index = this.observers.indexOf(observer);
+        if (index > -1) {
+            this.observers.splice(index, 1);
+        }
+    }
+    
+    notifyObservers(data: any) {
+        for (const observer of this.observers) {
+            observer.update(data);
+        }
+    }
+}
+
+class ConcreteObserver implements Observer {
+    update(data: any) {
+        console.log(`Received update with data: ${data}`);
+    }
+}
+
+const subject = new Subject();
+const observer1 = new ConcreteObserver();
+const observer2 = new ConcreteObserver();
+
+subject.addObserver(observer1);
+subject.addObserver(observer2);
+
+subject.notifyObservers("Some data");</code></pre>
+                            </div>
+                            
+                            <div class="pattern">
+                                <h5>Strategy</h5>
+                                <p>Lets you define a family of algorithms, put each of them into a separate class, and make their objects interchangeable.</p>
+                                <pre><code>interface PaymentStrategy {
+    pay(amount: number): void;
+}
+
+class CreditCardPayment implements PaymentStrategy {
+    constructor(private cardNumber: string, private cvv: string) {}
+    
+    pay(amount: number) {
+        console.log(`Paying ${amount} using credit card ${this.cardNumber}`);
+    }
+}
+
+class PayPalPayment implements PaymentStrategy {
+    constructor(private email: string, private password: string) {}
+    
+    pay(amount: number) {
+        console.log(`Paying ${amount} using PayPal account ${this.email}`);
+    }
+}
+
+class ShoppingCart {
+    constructor(private paymentStrategy: PaymentStrategy) {}
+    
+    checkout(amount: number) {
+        this.paymentStrategy.pay(amount);
+    }
+}
+
+// Usage
+const cart1 = new ShoppingCart(new CreditCardPayment("1234-5678-9012-3456", "123"));
+cart1.checkout(100);
+
+const cart2 = new ShoppingCart(new PayPalPayment("user@example.com", "password"));
+cart2.checkout(50);</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>SOLID Principles in OOP</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>SOLID principles are a set of five design principles intended to make software designs more understandable, flexible, and maintainable.</p>
+                        
+                        <div class="solid-principles">
+                            <div class="principle">
+                                <h4>Single Responsibility Principle (SRP)</h4>
+                                <p>A class should have only one reason to change, meaning it should have only one job or responsibility.</p>
+                                <pre><code>// Bad: Class with multiple responsibilities
+class User {
+    saveToDatabase() { /* ... */ }
+    sendEmail() { /* ... */ }
+}
+
+// Good: Separate responsibilities
+class User {}
+class UserRepository {
+    save(user: User) { /* ... */ }
+}
+class EmailService {
+    send(user: User, message: string) { /* ... */ }
+}</code></pre>
+                            </div>
+                            
+                            <div class="principle">
+                                <h4>Open/Closed Principle (OCP)</h4>
+                                <p>Software entities should be open for extension but closed for modification.</p>
+                                <pre><code>// Bad: Modifying existing class for new shapes
+class AreaCalculator {
+    calculate(shapes: Shape[]) {
+        // if-else for each shape type
+    }
+}
+
+// Good: Open for extension
+abstract class Shape {
+    abstract area(): number;
+}
+class Circle extends Shape { /* ... */ }
+class Square extends Shape { /* ... */ }</code></pre>
+                            </div>
+                            
+                            <div class="principle">
+                                <h4>Liskov Substitution Principle (LSP)</h4>
+                                <p>Objects of a superclass should be replaceable with objects of its subclasses without breaking the application.</p>
+                                <pre><code>// Bad: Square extends Rectangle but changes behavior
+class Rectangle {
+    setWidth(w) { this.width = w; }
+    setHeight(h) { this.height = h; }
+}
+class Square extends Rectangle {
+    setSize(s) { this.width = this.height = s; }
+}
+
+// Good: Separate classes or interface
+interface Shape {
+    area(): number;
+}</code></pre>
+                            </div>
+                            
+                            <div class="principle">
+                                <h4>Interface Segregation Principle (ISP)</h4>
+                                <p>Clients should not be forced to depend on interfaces they do not use.</p>
+                                <pre><code>// Bad: Fat interface
+interface Worker {
+    work(): void;
+    eat(): void;
+}
+
+// Good: Segregated interfaces
+interface Workable {
+    work(): void;
+}
+interface Eatable {
+    eat(): void;
+}</code></pre>
+                            </div>
+                            
+                            <div class="principle">
+                                <h4>Dependency Inversion Principle (DIP)</h4>
+                                <p>High-level modules should not depend on low-level modules. Both should depend on abstractions.</p>
+                                <pre><code>// Bad: High-level depends on low-level
+class LightBulb {
+    turnOn() { /* ... */ }
+}
+class Switch {
+    constructor(private bulb: LightBulb) {}
+}
+
+// Good: Both depend on abstraction
+interface Switchable {
+    turnOn(): void;
+}
+class LightBulb implements Switchable { /* ... */ }
+class Switch {
+    constructor(private device: Switchable) {}
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Advanced OOP Concepts</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <h4>Composition vs Inheritance</h4>
+                        <p>Prefer composition over inheritance for more flexible and maintainable code.</p>
+                        
+                        <div class="comparison">
+                            <div class="approach">
+                                <h5>Inheritance (is-a relationship)</h5>
+                                <pre><code>class Animal {
+    eat() { /* ... */ }
+}
+
+class Dog extends Animal {
+    bark() { /* ... */ }
+}
+
+const dog = new Dog();
+dog.eat();
+dog.bark();</code></pre>
+                                <p><strong>Pros:</strong> Code reuse, easy to understand hierarchy</p>
+                                <p><strong>Cons:</strong> Tight coupling, fragile base class problem</p>
+                            </div>
+                            
+                            <div class="approach">
+                                <h5>Composition (has-a relationship)</h5>
+                                <pre><code>class Eater {
+    eat() { /* ... */ }
+}
+
+class Barker {
+    bark() { /* ... */ }
+}
+
+class Dog {
+    private eater = new Eater();
+    private barker = new Barker();
+    
+    eat() { this.eater.eat(); }
+    bark() { this.barker.bark(); }
+}
+
+const dog = new Dog();
+dog.eat();
+dog.bark();</code></pre>
+                                <p><strong>Pros:</strong> More flexible, easier to change behavior</p>
+                                <p><strong>Cons:</strong> More boilerplate code</p>
+                            </div>
+                        </div>
+                        
+                        <h4>Dependency Injection</h4>
+                        <p>A technique where an object receives other objects it depends on (its dependencies) rather than creating them itself.</p>
+                        <pre><code>// Without DI
+class UserService {
+    private userRepository = new UserRepository();
+    
+    getUsers() {
+        return this.userRepository.getUsers();
+    }
+}
+
+// With DI
+class UserService {
+    constructor(private userRepository: UserRepository) {}
+    
+    getUsers() {
+        return this.userRepository.getUsers();
+    }
+}
+
+// Usage
+const userRepository = new UserRepository();
+const userService = new UserService(userRepository);</code></pre>
+                        
+                        <h4>Law of Demeter (Principle of Least Knowledge)</h4>
+                        <p>A method of an object should only call methods of:</p>
+                        <ul>
+                            <li>Itself</li>
+                            <li>Its parameters</li>
+                            <li>Any objects it creates</li>
+                            <li>Its direct component objects</li>
+                        </ul>
+                        
+                        <pre><code>// Bad: Violates Law of Demeter
+class Wallet {
+    constructor(public amount: number) {}
+}
+
+class Person {
+    constructor(public wallet: Wallet) {}
+}
+
+const person = new Person(new Wallet(100));
+console.log(person.wallet.amount); // Direct access to wallet's amount
+
+// Good: Follows Law of Demeter
+class Wallet {
+    constructor(private amount: number) {}
+    
+    getAmount() {
+        return this.amount;
+    }
+}
+
+class Person {
+    constructor(private wallet: Wallet) {}
+    
+    getWalletAmount() {
+        return this.wallet.getAmount();
+    }
+}
+
+const person = new Person(new Wallet(100));
+console.log(person.getWalletAmount()); // Indirect access</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="video-resource">
+                <h3>Video Explanation</h3>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Ej_02ICOIgs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        <section id="design-principles" class="content-section">
+    <h2>Design & Development Principles</h2>
+    <p class="section-intro">Essential principles and methodologies for creating effective, maintainable, and user-friendly software and interfaces.</p>
+    
+    <div class="accordion">
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>User-Centered Design (UCD)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>An iterative design process that focuses on users and their needs in each phase of the design process.</p>
+                <h4>Key Phases:</h4>
+                <ol>
+                    <li><strong>Research:</strong> Understand user needs, behaviors, and pain points</li>
+                    <li><strong>Conceptualization:</strong> Create user personas and scenarios</li>
+                    <li><strong>Design:</strong> Develop wireframes and prototypes</li>
+                    <li><strong>Evaluation:</strong> Test with real users and gather feedback</li>
+                    <li><strong>Implementation:</strong> Develop the final product</li>
+                </ol>
+                <h4>Benefits:</h4>
+                <ul>
+                    <li>Increased product usability</li>
+                    <li>Higher user satisfaction</li>
+                    <li>Reduced development costs (fewer revisions needed)</li>
+                    <li>Better adoption rates</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>KISS (Keep It Simple, Stupid)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>The principle that most systems work best if they are kept simple rather than made complicated.</p>
+                <h4>Application in Development:</h4>
+                <ul>
+                    <li>Write simple, straightforward code</li>
+                    <li>Avoid unnecessary complexity in architecture</li>
+                    <li>Create intuitive user interfaces</li>
+                    <li>Minimize feature creep</li>
+                </ul>
+                <h4>Example:</h4>
+                <pre><code>// Complex
+function calculateTotal(items) {
+    return items.reduce((total, item) => {
+        return total + (item.price * item.quantity) - 
+               (item.discount || 0) + 
+               (item.taxable ? item.price * 0.1 : 0);
+    }, 0);
+}
+
+// Simple (KISS)
+function calculateItemTotal(item) {
+    const subtotal = item.price * item.quantity;
+    const discount = item.discount || 0;
+    const tax = item.taxable ? subtotal * 0.1 : 0;
+    return subtotal - discount + tax;
+}
+
+function calculateTotal(items) {
+    return items.reduce((total, item) => total + calculateItemTotal(item), 0);
+}</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>DRY (Don't Repeat Yourself)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A principle of software development aimed at reducing repetition of software patterns.</p>
+                <h4>Implementation Techniques:</h4>
+                <ul>
+                    <li>Create reusable functions/components</li>
+                    <li>Use inheritance and composition</li>
+                    <li>Implement shared libraries</li>
+                    <li>Centralize business logic</li>
+                </ul>
+                <h4>Example:</h4>
+                <pre><code>// Violating DRY
+function calculateCircleArea(radius) {
+    return Math.PI * radius * radius;
+}
+
+function calculateCircleCircumference(radius) {
+    return 2 * Math.PI * radius;
+}
+
+// Following DRY
+const circleUtils = {
+    PI: Math.PI,
+    
+    area(radius) {
+        return this.PI * radius * radius;
+    },
+    
+    circumference(radius) {
+        return 2 * this.PI * radius;
+    }
+};</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>YAGNI (You Aren't Gonna Need It)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A principle of extreme programming (XP) that states a programmer should not add functionality until deemed necessary.</p>
+                <h4>Key Aspects:</h4>
+                <ul>
+                    <li>Avoid speculative development</li>
+                    <li>Focus on current requirements</li>
+                    <li>Reduce unnecessary complexity</li>
+                    <li>Save development time</li>
+                </ul>
+                <h4>When to Apply:</h4>
+                <ul>
+                    <li>When considering adding "just in case" features</li>
+                    <li>When over-engineering solutions</li>
+                    <li>When tempted by premature optimization</li>
+                </ul>
+                <h4>Example:</h4>
+                <pre><code>// YAGNI violation
+class User {
+    constructor(name) {
+        this.name = name;
+        this.permissions = []; // Adding permissions system before it's needed
+    }
+    
+    // Methods for permissions that aren't used yet
+}
+
+// YAGNI compliant
+class User {
+    constructor(name) {
+        this.name = name;
+    }
+    
+    // Add permissions only when required
+}</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Fitts's Law (UI Interaction Efficiency)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A predictive model of human movement that states the time required to move to a target area is a function of the distance to the target and the size of the target.</p>
+                <h4>UI Design Implications:</h4>
+                <ul>
+                    <li>Make clickable elements large enough</li>
+                    <li>Place important buttons in easily reachable areas</li>
+                    <li>Consider screen edges as "infinite" targets (menus, buttons)</li>
+                    <li>Group related controls together</li>
+                </ul>
+                <h4>Examples:</h4>
+                <div class="fitts-examples">
+                    <div class="example">
+                        <h5>Good:</h5>
+                        <ul>
+                            <li>Large, easily clickable buttons</li>
+                            <li>Navigation menus at screen edges</li>
+                            <li>Floating action buttons (FABs) in mobile apps</li>
+                        </ul>
+                    </div>
+                    <div class="example">
+                        <h5>Bad:</h5>
+                        <ul>
+                            <li>Tiny close buttons</li>
+                            <li>Important actions far from cursor start position</li>
+                            <li>Small click targets on touch interfaces</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Hick's Law (Decision-Making Simplicity)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>The time it takes to make a decision increases with the number and complexity of choices.</p>
+                <h4>UI Design Applications:</h4>
+                <ul>
+                    <li>Limit choices on navigation menus</li>
+                    <li>Break complex processes into steps</li>
+                    <li>Use progressive disclosure</li>
+                    <li>Highlight recommended options</li>
+                </ul>
+                <h4>Example:</h4>
+                <div class="hick-example">
+                    <div class="before-after">
+                        <div>
+                            <h5>Before (Too Many Options):</h5>
+                            <img src="https://via.placeholder.com/300x200?text=Complex+Menu+with+20+Items" alt="Complex menu">
+                        </div>
+                        <div>
+                            <h5>After (Simplified):</h5>
+                            <img src="https://via.placeholder.com/300x200?text=Simplified+Menu+with+5+Main+Items" alt="Simplified menu">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Jakob's Law (Familiar UI Patterns)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>Users spend most of their time on other sites, so they prefer your site to work the same way as all the other sites they already know.</p>
+                <h4>Design Implications:</h4>
+                <ul>
+                    <li>Use standard navigation patterns</li>
+                    <li>Follow platform conventions</li>
+                    <li>Place common elements where users expect them</li>
+                    <li>Resist unnecessary innovation in basic interactions</li>
+                </ul>
+                <h4>Common UI Conventions:</h4>
+                <table>
+                    <tr>
+                        <th>Element</th>
+                        <th>Common Placement</th>
+                    </tr>
+                    <tr>
+                        <td>Logo</td>
+                        <td>Top-left corner, links to homepage</td>
+                    </tr>
+                    <tr>
+                        <td>Search</td>
+                        <td>Top-right or center of header</td>
+                    </tr>
+                    <tr>
+                        <td>Main navigation</td>
+                        <td>Horizontal across top or vertical left side</td>
+                    </tr>
+                    <tr>
+                        <td>Login</td>
+                        <td>Top-right corner</td>
+                    </tr>
+                    <tr>
+                        <td>Shopping cart</td>
+                        <td>Top-right corner with icon</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Mobile-First Approach</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A design strategy that starts with designing for mobile devices first, then progressively enhances the experience for larger screens.</p>
+                <h4>Benefits:</h4>
+                <ul>
+                    <li>Forces focus on core content and functionality</li>
+                    <li>Results in better performance on mobile</li>
+                    <li>Easier to scale up than to scale down</li>
+                    <li>Aligns with increasing mobile usage</li>
+                </ul>
+                <h4>Implementation:</h4>
+                <pre><code>/* Mobile-first CSS example */
+/* Base styles (mobile) */
+.container {
+    width: 100%;
+    padding: 10px;
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+        padding: 15px;
+    }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+        padding: 20px;
+    }
+}</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Progressive Enhancement</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A strategy for web design that emphasizes core webpage content first, then progressively adds more nuanced and technically rigorous layers of presentation and features.</p>
+                <h4>Layers of Progressive Enhancement:</h4>
+                <ol>
+                    <li><strong>Content:</strong> Semantic HTML that works everywhere</li>
+                    <li><strong>Presentation:</strong> CSS for visual styling</li>
+                    <li><strong>Behavior:</strong> JavaScript for enhanced functionality</li>
+                    <li><strong>Richness:</strong> Advanced features for capable browsers</li>
+                </ol>
+                <h4>Example:</h4>
+                <pre><code>&lt;!-- Basic HTML form works without JS --&gt;
+&lt;form id="search-form" action="/search" method="get"&gt;
+    &lt;input type="text" name="q" placeholder="Search..."&gt;
+    &lt;button type="submit"&gt;Search&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- Enhanced with JavaScript --&gt;
+&lt;script&gt;
+document.getElementById('search-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // AJAX search functionality
+    const query = this.querySelector('input[name="q"]').value;
+    fetch(`/api/search?q=${encodeURIComponent(query)}`)
+        .then(response => response.json())
+        .then(displayResults);
+});
+&lt;/script&gt;</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Graceful Degradation</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>The practice of building a website so it provides a good level of user experience in modern browsers, but will still deliver a usable experience in older browsers.</p>
+                <h4>Key Strategies:</h4>
+                <ul>
+                    <li>Use feature detection instead of browser detection</li>
+                    <li>Provide fallbacks for unsupported features</li>
+                    <li>Ensure core functionality works everywhere</li>
+                    <li>Use polyfills for missing APIs</li>
+                </ul>
+                <h4>Example:</h4>
+                <pre><code>// Check for geolocation support
+if ("geolocation" in navigator) {
+    // Use modern geolocation API
+    navigator.geolocation.getCurrentPosition(showPosition);
+} else {
+    // Fallback to IP-based location or manual input
+    document.getElementById('manual-location').style.display = 'block';
+}</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Atomic Design (Component-Based UI)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A methodology for creating design systems with five distinct levels: atoms, molecules, organisms, templates, and pages.</p>
+                <h4>Atomic Design Levels:</h4>
+                <ol>
+                    <li><strong>Atoms:</strong> Basic HTML elements (buttons, inputs, labels)</li>
+                    <li><strong>Molecules:</strong> Groups of atoms (search form = input + button)</li>
+                    <li><strong>Organisms:</strong> Complex UI components (header, product card)</li>
+                    <li><strong>Templates:</strong> Page-level objects (wireframes)</li>
+                    <li><strong>Pages:</strong> Specific instances of templates</li>
+                </ol>
+                <h4>Benefits:</h4>
+                <ul>
+                    <li>Consistent UI across application</li>
+                    <li>Reusable components</li>
+                    <li>Easier maintenance</li>
+                    <li>Better collaboration between designers and developers</li>
+                </ul>
+                <h4>Example Implementation:</h4>
+                <pre><code>// React example
+// Atoms
+const Button = ({ children, ...props }) => (
+    &lt;button className="btn" {...props}&gt;{children}&lt;/button&gt;
+);
+
+// Molecules
+const SearchForm = ({ onSubmit }) => (
+    &lt;form onSubmit={onSubmit}&gt;
+        &lt;input type="text" placeholder="Search..." /&gt;
+        &lt;Button type="submit"&gt;Search&lt;/Button&gt;
+    &lt;/form&gt;
+);
+
+// Organisms
+const Header = () => (
+    &lt;header&gt;
+        &lt;Logo /&gt;
+        &lt;SearchForm onSubmit={handleSearch} /&gt;
+        &lt;Navigation /&gt;
+    &lt;/header&gt;
+);</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Separation of Concerns (SoC)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A design principle for separating a computer program into distinct sections, where each section addresses a separate concern.</p>
+                <h4>Common Separations:</h4>
+                <ul>
+                    <li><strong>Model-View-Controller (MVC):</strong> Separates data, presentation, and control logic</li>
+                    <li><strong>Frontend/Backend:</strong> Separates client-side and server-side code</li>
+                    <li><strong>Presentation/Content/Behavior:</strong> HTML/CSS/JS separation</li>
+                </ul>
+                <h4>Benefits:</h4>
+                <ul>
+                    <li>Easier maintenance</li>
+                    <li>Better code organization</li>
+                    <li>Improved reusability</li>
+                    <li>Parallel development</li>
+                </ul>
+                <h4>Example (MVC):</h4>
+                <pre><code>// Model (data)
+class UserModel {
+    constructor() {
+        this.users = [];
+    }
+    
+    addUser(user) {
+        this.users.push(user);
+    }
+}
+
+// View (presentation)
+class UserView {
+    render(users) {
+        console.log('User list:');
+        users.forEach(user => console.log(`- ${user}`));
+    }
+}
+
+// Controller (logic)
+class UserController {
+    constructor(model, view) {
+        this.model = model;
+        this.view = view;
+    }
+    
+    addUser(name) {
+        this.model.addUser(name);
+        this.view.render(this.model.users);
+    }
+}</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Minimal Viable Product (MVP) Approach</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A development technique where a new product is developed with sufficient features to satisfy early adopters, then improved based on feedback.</p>
+                <h4>MVP Characteristics:</h4>
+                <ul>
+                    <li>Has just enough features to be usable</li>
+                    <li>Solves the core problem for early users</li>
+                    <li>Allows for validated learning</li>
+                    <li>Minimizes initial development costs</li>
+                </ul>
+                <h4>MVP Development Process:</h4>
+                <ol>
+                    <li>Identify the core problem</li>
+                    <li>Define the minimum feature set</li>
+                    <li>Build the MVP</li>
+                    <li>Measure and learn</li>
+                    <li>Iterate and improve</li>
+                </ol>
+                <h4>Example:</h4>
+                <div class="mvp-example">
+                    <p><strong>Problem:</strong> People need food delivered quickly</p>
+                    <p><strong>MVP Solution:</strong> A simple website with:</p>
+                    <ul>
+                        <li>Menu from one local restaurant</li>
+                        <li>Basic order form</li>
+                        <li>Phone number for support</li>
+                        <li>Manual order processing</li>
+                    </ul>
+                    <p>Later iterations could add: multiple restaurants, payment processing, mobile app, etc.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Fail Fast, Iterate Quickly</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A development philosophy that emphasizes rapid prototyping, quick failure, and continuous iteration to arrive at the best solution.</p>
+                <h4>Key Aspects:</h4>
+                <ul>
+                    <li>Identify failures early in the development cycle</li>
+                    <li>Minimize the cost of failure</li>
+                    <li>Learn from failures quickly</li>
+                    <li>Incorporate lessons into next iteration</li>
+                </ul>
+                <h4>Implementation Strategies:</h4>
+                <ul>
+                    <li>Continuous integration and deployment</li>
+                    <li>Automated testing</li>
+                    <li>Frequent user testing</li>
+                    <li>Short development cycles</li>
+                </ul>
+                <h4>Example Workflow:</h4>
+                <ol>
+                    <li>Build a prototype (1-2 weeks)</li>
+                    <li>Test with real users</li>
+                    <li>Analyze results</li>
+                    <li>Identify what worked and what didn't</li>
+                    <li>Adjust approach</li>
+                    <li>Repeat</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    
+    
+</section>
+
+
+
+
+<section id="methodologies" class="content-section">
+    <h2>Development Methodologies</h2>
+    <p class="section-intro">Various approaches to software development, each with its own processes, practices, and principles for organizing work.</p>
+    
+    <div class="accordion">
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Agile Development</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>An iterative approach to software development that emphasizes flexibility, collaboration, and customer satisfaction.</p>
+                <h4>Core Principles:</h4>
+                <ul>
+                    <li>Individuals and interactions over processes and tools</li>
+                    <li>Working software over comprehensive documentation</li>
+                    <li>Customer collaboration over contract negotiation</li>
+                    <li>Responding to change over following a plan</li>
+                </ul>
+                <h4>Agile Process Flow:</h4>
+                <ol>
+                    <li>Project initiation and vision</li>
+                    <li>Release planning</li>
+                    <li>Iteration/Sprint planning</li>
+                    <li>Daily standups</li>
+                    <li>Iteration/Sprint review</li>
+                    <li>Retrospective</li>
+                </ol>
+                <h4>When to Use:</h4>
+                <ul>
+                    <li>When requirements are likely to change</li>
+                    <li>For complex projects with uncertain outcomes</li>
+                    <li>When customer feedback is crucial</li>
+                    <li>For projects requiring frequent delivery</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Scrum</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>An agile framework for managing complex knowledge work, with an emphasis on software development.</p>
+                <h4>Key Roles:</h4>
+                <ul>
+                    <li><strong>Product Owner:</strong> Represents stakeholders and customers</li>
+                    <li><strong>Scrum Master:</strong> Ensures Scrum is understood and enacted</li>
+                    <li><strong>Development Team:</strong> Self-organizing professionals who do the work</li>
+                </ul>
+                <h4>Scrum Artifacts:</h4>
+                <ul>
+                    <li><strong>Product Backlog:</strong> Ordered list of everything known to be needed in the product</li>
+                    <li><strong>Sprint Backlog:</strong> Set of Product Backlog items selected for the Sprint</li>
+                    <li><strong>Increment:</strong> Sum of all Product Backlog items completed during a Sprint</li>
+                </ul>
+                <h4>Scrum Events:</h4>
+                <table>
+                    <tr>
+                        <th>Event</th>
+                        <th>Duration</th>
+                        <th>Purpose</th>
+                    </tr>
+                    <tr>
+                        <td>Sprint Planning</td>
+                        <td>Max 8h for 4-week Sprint</td>
+                        <td>Plan work for upcoming Sprint</td>
+                    </tr>
+                    <tr>
+                        <td>Daily Scrum</td>
+                        <td>15 minutes</td>
+                        <td>Daily synchronization</td>
+                    </tr>
+                    <tr>
+                        <td>Sprint Review</td>
+                        <td>Max 4h for 4-week Sprint</td>
+                        <td>Inspect the Increment and adapt backlog</td>
+                    </tr>
+                    <tr>
+                        <td>Sprint Retrospective</td>
+                        <td>Max 3h for 4-week Sprint</td>
+                        <td>Plan improvements for next Sprint</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Kanban</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A visual system for managing work as it moves through a process, emphasizing continuous delivery without overburdening the team.</p>
+                <h4>Core Practices:</h4>
+                <ol>
+                    <li>Visualize the workflow</li>
+                    <li>Limit Work in Progress (WIP)</li>
+                    <li>Manage flow</li>
+                    <li>Make process policies explicit</li>
+                    <li>Implement feedback loops</li>
+                    <li>Improve collaboratively</li>
+                </ol>
+                <h4>Kanban Board Example:</h4>
+                <div class="kanban-example">
+                    <div class="kanban-column">
+                        <h5>Backlog</h5>
+                        <div class="kanban-card">User Authentication</div>
+                        <div class="kanban-card">Dashboard UI</div>
+                    </div>
+                    <div class="kanban-column">
+                        <h5>To Do</h5>
+                        <div class="kanban-card">API Integration</div>
+                    </div>
+                    <div class="kanban-column">
+                        <h5>In Progress (WIP: 2)</h5>
+                        <div class="kanban-card">Database Schema</div>
+                        <div class="kanban-card">Mobile Responsiveness</div>
+                    </div>
+                    <div class="kanban-column">
+                        <h5>Code Review</h5>
+                        <div class="kanban-card">Login Page</div>
+                    </div>
+                    <div class="kanban-column">
+                        <h5>Done</h5>
+                        <div class="kanban-card">Initial Setup</div>
+                    </div>
+                </div>
+                <h4>Benefits:</h4>
+                <ul>
+                    <li>Increased visibility of work</li>
+                    <li>Flexibility in prioritization</li>
+                    <li>Reduced cycle time</li>
+                    <li>Improved flow efficiency</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Waterfall (for structured projects)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A linear approach to software development where each phase must be completed before the next begins.</p>
+                <h4>Waterfall Phases:</h4>
+                <ol>
+                    <li><strong>Requirements:</strong> Document all system requirements</li>
+                    <li><strong>Design:</strong> Create system and software designs</li>
+                    <li><strong>Implementation:</strong> Write and implement code</li>
+                    <li><strong>Verification:</strong> Test and verify the system</li>
+                    <li><strong>Maintenance:</strong> Deploy and maintain the system</li>
+                </ol>
+                <h4>When to Use Waterfall:</h4>
+                <ul>
+                    <li>When requirements are very well understood and fixed</li>
+                    <li>For small to medium-sized projects</li>
+                    <li>When technology is well understood</li>
+                    <li>For projects with strict regulatory requirements</li>
+                    <li>When customer won't accept partial deliveries</li>
+                </ul>
+                <h4>Comparison with Agile:</h4>
+                <table>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Waterfall</th>
+                        <th>Agile</th>
+                    </tr>
+                    <tr>
+                        <td>Flexibility</td>
+                        <td>Low (changes difficult)</td>
+                        <td>High (embraces change)</td>
+                    </tr>
+                    <tr>
+                        <td>Customer Involvement</td>
+                        <td>Only at beginning and end</td>
+                        <td>Continuous throughout</td>
+                    </tr>
+                    <tr>
+                        <td>Delivery</td>
+                        <td>Single final delivery</td>
+                        <td>Frequent incremental deliveries</td>
+                    </tr>
+                    <tr>
+                        <td>Documentation</td>
+                        <td>Comprehensive upfront</td>
+                        <td>Minimal, just enough</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>DevOps (CI/CD Pipelines)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A set of practices that combines software development (Dev) and IT operations (Ops) to shorten the systems development life cycle.</p>
+                <h4>Key DevOps Practices:</h4>
+                <ul>
+                    <li>Continuous Integration (CI)</li>
+                    <li>Continuous Delivery/Deployment (CD)</li>
+                    <li>Infrastructure as Code</li>
+                    <li>Monitoring and Logging</li>
+                    <li>Communication and Collaboration</li>
+                </ul>
+                <h4>CI/CD Pipeline Example:</h4>
+                <div class="pipeline-example">
+                    <div class="pipeline-stage">
+                        <h5>1. Code Commit</h5>
+                        <p>Developer pushes code to version control</p>
+                    </div>
+                    <div class="pipeline-stage">
+                        <h5>2. Build</h5>
+                        <p>Automated build process compiles code</p>
+                    </div>
+                    <div class="pipeline-stage">
+                        <h5>3. Test</h5>
+                        <p>Automated tests run (unit, integration, etc.)</p>
+                    </div>
+                    <div class="pipeline-stage">
+                        <h5>4. Deploy to Staging</h5>
+                        <p>Application deployed to test environment</p>
+                    </div>
+                    <div class="pipeline-stage">
+                        <h5>5. Approval</h5>
+                        <p>Manual approval for production</p>
+                    </div>
+                    <div class="pipeline-stage">
+                        <h5>6. Deploy to Production</h5>
+                        <p>Automated deployment to production</p>
+                    </div>
+                </div>
+                <h4>DevOps Tools:</h4>
+                <div class="devops-tools">
+                    <div class="tool-category">
+                        <h5>Version Control:</h5>
+                        <ul>
+                            <li>Git</li>
+                            <li>GitHub</li>
+                            <li>GitLab</li>
+                            <li>Bitbucket</li>
+                        </ul>
+                    </div>
+                    <div class="tool-category">
+                        <h5>CI/CD:</h5>
+                        <ul>
+                            <li>Jenkins</li>
+                            <li>CircleCI</li>
+                            <li>GitHub Actions</li>
+                            <li>Azure DevOps</li>
+                        </ul>
+                    </div>
+                    <div class="tool-category">
+                        <h5>Containerization:</h5>
+                        <ul>
+                            <li>Docker</li>
+                            <li>Kubernetes</li>
+                        </ul>
+                    </div>
+                    <div class="tool-category">
+                        <h5>Monitoring:</h5>
+                        <ul>
+                            <li>Prometheus</li>
+                            <li>Grafana</li>
+                            <li>New Relic</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Test-Driven Development (TDD)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A software development approach where tests are written before the code they are testing.</p>
+                <h4>TDD Cycle (Red-Green-Refactor):</h4>
+                <ol>
+                    <li><strong>Red:</strong> Write a failing test for new functionality</li>
+                    <li><strong>Green:</strong> Write minimal code to make the test pass</li>
+                    <li><strong>Refactor:</strong> Improve code while keeping tests passing</li>
+                </ol>
+                <h4>Benefits:</h4>
+                <ul>
+                    <li>Better code quality and design</li>
+                    <li>Reduced bug count</li>
+                    <li>Living documentation</li>
+                    <li>Easier refactoring</li>
+                </ul>
+                <h4>Example:</h4>
+                <pre><code>// 1. Write test first (Red)
+describe('String Calculator', () => {
+    it('should return 0 for empty string', () => {
+        expect(add("")).toEqual(0);
+    });
+});
+
+// 2. Implement minimal code (Green)
+function add(numbers) {
+    return 0;
+}
+
+// 3. Add test for single number
+it('should return number for single input', () => {
+    expect(add("5")).toEqual(5);
+});
+
+// 4. Update implementation
+function add(numbers) {
+    if (numbers === "") return 0;
+    return parseInt(numbers);
+}
+
+// 5. Continue cycle with more tests...</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Behavior-Driven Development (BDD)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>An extension of TDD that emphasizes collaboration between developers, QA, and non-technical participants through the use of natural language specifications.</p>
+                <h4>BDD Structure (Given-When-Then):</h4>
+                <pre><code>Feature: User login
+  Scenario: Successful login with valid credentials
+    Given the user is on the login page
+    When they enter valid credentials
+    Then they should be redirected to the dashboard</code></pre>
+                <h4>BDD Tools:</h4>
+                <ul>
+                    <li>Cucumber (JavaScript, Java, Ruby)</li>
+                    <li>SpecFlow (.NET)</li>
+                    <li>Behave (Python)</li>
+                    <li>JBehave (Java)</li>
+                </ul>
+                <h4>Benefits:</h4>
+                <ul>
+                    <li>Improved communication between teams</li>
+                    <li>Clear understanding of requirements</li>
+                    <li>Executable specifications</li>
+                    <li>Living documentation</li>
+                </ul>
+                <h4>Example Implementation:</h4>
+                <pre><code>// Step definitions (JavaScript with Cucumber)
+Given('the user is on the login page', async () => {
+    await page.goto('https://example.com/login');
+});
+
+When('they enter valid credentials', async () => {
+    await page.fill('#username', 'testuser');
+    await page.fill('#password', 'password123');
+    await page.click('#login-button');
+});
+
+Then('they should be redirected to the dashboard', async () => {
+    await page.waitForSelector('.dashboard');
+    expect(page.url()).toContain('/dashboard');
+});</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Feature-Driven Development (FDD)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>An iterative and incremental software development process that focuses on developing features in short iterations.</p>
+                <h4>FDD Processes:</h4>
+                <ol>
+                    <li><strong>Develop Overall Model:</strong> Create a high-level object model</li>
+                    <li><strong>Build Feature List:</strong> Identify all features needed</li>
+                    <li><strong>Plan by Feature:</strong> Create development plan</li>
+                    <li><strong>Design by Feature:</strong> Design each feature</li>
+                    <li><strong>Build by Feature:</strong> Implement each feature</li>
+                </ol>
+                <h4>Feature Definition:</h4>
+                <p>Features in FDD are small, client-valued functions expressed as:</p>
+                <p><em>"&lt;action&gt; the &lt;result&gt; &lt;by|for|of|to&gt; a(n) &lt;object&gt;"</em></p>
+                <p>Example: "Calculate the total of a sale"</p>
+                <h4>Benefits:</h4>
+                <ul>
+                    <li>Scalable for large teams</li>
+                    <li>Clear progress tracking</li>
+                    <li>Client-focused development</li>
+                    <li>Good documentation output</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Domain-Driven Design (DDD)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>An approach to software development that focuses on modeling software to match a business domain.</p>
+                <h4>Key Concepts:</h4>
+                <ul>
+                    <li><strong>Ubiquitous Language:</strong> Shared language between developers and domain experts</li>
+                    <li><strong>Bounded Context:</strong> Explicit boundaries around domain models</li>
+                    <li><strong>Entities:</strong> Objects with distinct identity</li>
+                    <li><strong>Value Objects:</strong> Objects defined by their attributes</li>
+                    <li><strong>Aggregates:</strong> Clusters of domain objects</li>
+                    <li><strong>Repositories:</strong> Methods for retrieving domain objects</li>
+                </ul>
+                <h4>Example (E-commerce Domain):</h4>
+                <pre><code>// Order Aggregate Root
+class Order {
+    constructor(id, customer, items) {
+        this._id = id; // Entity identifier
+        this._customer = customer; // Entity reference
+        this._items = items; // Value objects
+        this._status = 'pending';
+    }
+    
+    addItem(product, quantity) {
+        // Domain logic
+        if (this._status !== 'pending') {
+            throw new Error('Cannot modify shipped order');
+        }
+        this._items.push(new OrderItem(product, quantity));
+    }
+    
+    // Repository method would be in separate class
+    static findById(orderId) {
+        // Retrieve order from persistence
+    }
+}
+
+// Value Object
+class OrderItem {
+    constructor(product, quantity) {
+        this.product = product;
+        this.quantity = quantity;
+        this.unitPrice = product.price;
+    }
+    
+    get total() {
+        return this.unitPrice * this.quantity;
+    }
+}</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Pair Programming</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A software development technique where two programmers work together at one workstation.</p>
+                <h4>Roles:</h4>
+                <ul>
+                    <li><strong>Driver:</strong> Writes code (focuses on implementation)</li>
+                    <li><strong>Navigator:</strong> Reviews code, thinks strategically (focuses on direction)</li>
+                </ul>
+                <h4>Benefits:</h4>
+                <ul>
+                    <li>Improved code quality</li>
+                    <li>Knowledge sharing</li>
+                    <li>Fewer mistakes</li>
+                    <li>Better team cohesion</li>
+                </ul>
+                <h4>Best Practices:</h4>
+                <ul>
+                    <li>Switch roles frequently (every 30-60 minutes)</li>
+                    <li>Maintain open communication</li>
+                    <li>Take regular breaks</li>
+                    <li>Pair on complex tasks, not all tasks</li>
+                </ul>
+                <h4>When to Use:</h4>
+                <ul>
+                    <li>Complex problem-solving</li>
+                    <li>Onboarding new team members</li>
+                    <li>Critical code sections</li>
+                    <li>Knowledge transfer</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Continuous Integration (CI)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>The practice of merging all developers' working copies to a shared mainline several times a day.</p>
+                <h4>CI Process:</h4>
+                <ol>
+                    <li>Developers commit code to shared repository frequently</li>
+                    <li>Automated build system detects changes</li>
+                    <li>System runs automated tests</li>
+                    <li>Team is notified of build/test results</li>
+                    <li>Issues are fixed immediately</li>
+                </ol>
+                <h4>Benefits:</h4>
+                <ul>
+                    <li>Early bug detection</li>
+                    <li>Reduced integration problems</li>
+                    <li>Faster release cycles</li>
+                    <li>Improved code quality</li>
+                </ul>
+                <h4>CI Server Setup Example:</h4>
+                <pre><code># Sample GitHub Actions CI workflow
+name: CI Pipeline
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Run tests
+      run: npm test
+    
+    - name: Build project
+      run: npm run build</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Continuous Deployment (CD)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>The practice of automatically deploying all code changes to production after passing automated tests.</p>
+                <h4>CD Pipeline Stages:</h4>
+                <ol>
+                    <li>Code commit triggers CI pipeline</li>
+                    <li>Automated build and test</li>
+                    <li>Deployment to staging environment</li>
+                    <li>Automated integration/acceptance tests</li>
+                    <li>Automatic deployment to production</li>
+                    <li>Post-deployment monitoring</li>
+                </ol>
+                <h4>Key Requirements:</h4>
+                <ul>
+                    <li>Comprehensive test suite</li>
+                    <li>Feature flags/toggles</li>
+                    <li>Rollback capabilities</li>
+                    <li>Monitoring and alerting</li>
+                </ul>
+                <h4>Example CD Setup:</h4>
+                <pre><code># Sample deployment to AWS using GitHub Actions
+deploy:
+  needs: build
+  runs-on: ubuntu-latest
+  
+  steps:
+  - uses: actions/checkout@v2
+  
+  - name: Configure AWS credentials
+    uses: aws-actions/configure-aws-credentials@v1
+    with:
+      aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      aws-region: us-east-1
+  
+  - name: Deploy to AWS Elastic Beanstalk
+    run: |
+      eb setenv NODE_ENV=production
+      eb deploy my-environment --label ${{ github.sha }}</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Microservices Architecture</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>An architectural style that structures an application as a collection of loosely coupled services.</p>
+                <h4>Characteristics:</h4>
+                <ul>
+                    <li>Services are small and focused</li>
+                    <li>Each service runs in its own process</li>
+                    <li>Services communicate via lightweight mechanisms (HTTP/REST)</li>
+                    <li>Services can be deployed independently</li>
+                    <li>Each service has its own data storage</li>
+                </ul>
+                <h4>Benefits:</h4>
+                <ul>
+                    <li>Improved scalability</li>
+                    <li>Faster deployment cycles</li>
+                    <li>Technology diversity</li>
+                    <li>Better fault isolation</li>
+                </ul>
+                <h4>Challenges:</h4>
+                <ul>
+                    <li>Increased complexity</li>
+                    <li>Distributed system challenges</li>
+                    <li>Data consistency</li>
+                    <li>Network latency</li>
+                </ul>
+                <h4>Example Architecture:</h4>
+                <div class="architecture-diagram">
+                    <div class="service">
+                        <h5>API Gateway</h5>
+                        <p>Routes requests to appropriate services</p>
+                    </div>
+                    <div class="service">
+                        <h5>User Service</h5>
+                        <p>Handles user authentication and profiles</p>
+                    </div>
+                    <div class="service">
+                        <h5>Product Service</h5>
+                        <p>Manages product catalog</p>
+                    </div>
+                    <div class="service">
+                        <h5>Order Service</h5>
+                        <p>Processes customer orders</p>
+                    </div>
+                    <div class="service">
+                        <h5>Payment Service</h5>
+                        <p>Handles payment processing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Monolithic Architecture (when appropriate)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A traditional unified model for software design where all components are interconnected and interdependent.</p>
+                <h4>When to Use Monolithic Architecture:</h4>
+                <ul>
+                    <li>For small, simple applications</li>
+                    <li>When starting a new project (MVP)</li>
+                    <li>When team is small and co-located</li>
+                    <li>For applications with tight integration needs</li>
+                    <li>When simplicity is more important than scalability</li>
+                </ul>
+                <h4>Benefits:</h4>
+                <ul>
+                    <li>Simpler development and deployment</li>
+                    <li>Easier debugging and testing</li>
+                    <li>Simpler horizontal scaling</li>
+                    <li>Reduced operational complexity</li>
+                </ul>
+                <h4>Comparison with Microservices:</h4>
+                <table>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Monolithic</th>
+                        <th>Microservices</th>
+                    </tr>
+                    <tr>
+                        <td>Development Speed</td>
+                        <td>Faster initially</td>
+                        <td>Slower initially</td>
+                    </tr>
+                    <tr>
+                        <td>Scalability</td>
+                        <td>Scale entire app</td>
+                        <td>Scale individual services</td>
+                    </tr>
+                    <tr>
+                        <td>Technology Stack</td>
+                        <td>Single stack</td>
+                        <td>Multiple stacks possible</td>
+                    </tr>
+                    <tr>
+                        <td>Deployment</td>
+                        <td>Simple</td>
+                        <td>Complex</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>12-Factor App Methodology</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A methodology for building software-as-a-service apps that are portable, scalable, and maintainable.</p>
+                <h4>The Twelve Factors:</h4>
+                <ol>
+                    <li><strong>Codebase:</strong> One codebase tracked in revision control, many deploys</li>
+                    <li><strong>Dependencies:</strong> Explicitly declare and isolate dependencies</li>
+                    <li><strong>Config:</strong> Store config in the environment</li>
+                    <li><strong>Backing services:</strong> Treat backing services as attached resources</li>
+                    <li><strong>Build, release, run:</strong> Strictly separate build and run stages</li>
+                    <li><strong>Processes:</strong> Execute the app as one or more stateless processes</li>
+                    <li><strong>Port binding:</strong> Export services via port binding</li>
+                    <li><strong>Concurrency:</strong> Scale out via the process model</li>
+                    <li><strong>Disposability:</strong> Maximize robustness with fast startup and graceful shutdown</li>
+                    <li><strong>Dev/prod parity:</strong> Keep development, staging, and production as similar as possible</li>
+                    <li><strong>Logs:</strong> Treat logs as event streams</li>
+                    <li><strong>Admin processes:</strong> Run admin/management tasks as one-off processes</li>
+                </ol>
+                <h4>Example Implementation:</h4>
+                <pre><code># Dockerfile example following 12-factor principles
+FROM node:14-alpine
+
+# Set environment variables
+ENV NODE_ENV=production
+ENV PORT=3000
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install dependencies (factor 2)
+COPY package*.json ./
+RUN npm install --production
+
+# Bundle app source (factor 5)
+COPY . .
+
+# Expose port (factor 7)
+EXPOSE 3000
+
+# Run app (factor 6)
+CMD [ "node", "server.js" ]</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <div class="video-resource">
+        <h3>Video Explanation</h3>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/0Kqzfyp-w4s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section id="web-dev" class="content-section">
+    <h2>Web Development Techniques</h2>
+    <p class="section-intro">Modern techniques and best practices for building efficient, maintainable, and user-friendly web applications.</p>
+    
+    <div class="accordion">
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>SEO Optimization</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>Techniques to improve website visibility in search engine results pages (SERPs).</p>
+                
+                <h4>Key SEO Techniques:</h4>
+                <div class="two-column">
+                    <div>
+                        <h5>On-Page SEO:</h5>
+                        <ul>
+                            <li>Semantic HTML structure</li>
+                            <li>Proper heading hierarchy (H1-H6)</li>
+                            <li>Optimized meta tags (title, description)</li>
+                            <li>Image alt attributes</li>
+                            <li>URL structure</li>
+                            <li>Internal linking</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5>Technical SEO:</h5>
+                        <ul>
+                            <li>Mobile responsiveness</li>
+                            <li>Page speed optimization</li>
+                            <li>Structured data (Schema.org)</li>
+                            <li>XML sitemaps</li>
+                            <li>Canonical tags</li>
+                            <li>SSL/HTTPS</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h4>React/Vue SEO Example:</h4>
+                <pre><code>// Next.js SEO component example
+import Head from 'next/head';
+
+const SEO = ({ title, description }) => (
+  &lt;Head&gt;
+    &lt;title&gt;{title}&lt;/title&gt;
+    &lt;meta name="description" content={description} /&gt;
+    &lt;meta property="og:title" content={title} /&gt;
+    &lt;meta property="og:description" content={description} /&gt;
+    &lt;meta property="og:type" content="website" /&gt;
+    &lt;link rel="canonical" href="https://example.com" /&gt;
+  &lt;/Head&gt;
+);
+
+// Usage
+&lt;SEO title="Product Page" description="Our amazing product details" /&gt;</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Semantic HTML</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>Using HTML elements according to their intended meaning rather than just for presentation.</p>
+                
+                <h4>Semantic Elements:</h4>
+                <div class="semantic-grid">
+                    <div class="semantic-item">
+                        <code>&lt;header&gt;</code>
+                        <p>Introductory content or navigation</p>
+                    </div>
+                    <div class="semantic-item">
+                        <code>&lt;nav&gt;</code>
+                        <p>Navigation links</p>
+                    </div>
+                    <div class="semantic-item">
+                        <code>&lt;main&gt;</code>
+                        <p>Dominant content of the document</p>
+                    </div>
+                    <div class="semantic-item">
+                        <code>&lt;article&gt;</code>
+                        <p>Self-contained composition</p>
+                    </div>
+                    <div class="semantic-item">
+                        <code>&lt;section&gt;</code>
+                        <p>Thematic grouping of content</p>
+                    </div>
+                    <div class="semantic-item">
+                        <code>&lt;aside&gt;</code>
+                        <p>Tangentially related content</p>
+                    </div>
+                    <div class="semantic-item">
+                        <code>&lt;footer&gt;</code>
+                        <p>Footer for its nearest section</p>
+                    </div>
+                    <div class="semantic-item">
+                        <code>&lt;figure&gt;</code>
+                        <p>Self-contained flow content</p>
+                    </div>
+                </div>
+                
+                <h4>Example Page Structure:</h4>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;!-- Metadata --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Site Title&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;main&gt;
+        &lt;article&gt;
+            &lt;h2&gt;Article Title&lt;/h2&gt;
+            &lt;p&gt;Article content...&lt;/p&gt;
+        &lt;/article&gt;
+        
+        &lt;aside&gt;
+            &lt;h3&gt;Related Links&lt;/h3&gt;
+            &lt;!-- Side content --&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;© 2023 Company Name&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>CSS Preprocessors (Sass, Less)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>Scripting languages that extend CSS with variables, nesting, mixins, and more.</p>
+                
+                <h4>Sass Features:</h4>
+                <div class="two-column">
+                    <div>
+                        <h5>Variables:</h5>
+                        <pre><code>$primary-color: #3498db;
+$padding: 1rem;
+
+.button {
+  background: $primary-color;
+  padding: $padding;
+}</code></pre>
+                    </div>
+                    <div>
+                        <h5>Nesting:</h5>
+                        <pre><code>.nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    
+    li {
+      display: inline-block;
+    }
+  }
+}</code></pre>
+                    </div>
+                    <div>
+                        <h5>Mixins:</h5>
+                        <pre><code>@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  @include flex-center;
+}</code></pre>
+                    </div>
+                    <div>
+                        <h5>Functions:</h5>
+                        <pre><code>@function calculate-rem($size) {
+  @return $size / 16px * 1rem;
+}
+
+h1 {
+  font-size: calculate-rem(32px);
+}</code></pre>
+                    </div>
+                </div>
+                
+                <h4>Comparison:</h4>
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Sass</th>
+                        <th>Less</th>
+                    </tr>
+                    <tr>
+                        <td>Variables</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Nesting</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Mixins</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Logic/Control</td>
+                        <td>@if, @for, @each</td>
+                        <td>Limited</td>
+                    </tr>
+                    <tr>
+                        <td>Extends</td>
+                        <td>@extend</td>
+                        <td>:extend()</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>CSS-in-JS (Styled Components)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A styling technique where CSS is composed using JavaScript instead of defined in external files.</p>
+                
+                <h4>Benefits:</h4>
+                <ul>
+                    <li>Scoped styles (no naming conflicts)</li>
+                    <li>Dynamic styling with props</li>
+                    <li>Automatic vendor prefixing</li>
+                    <li>Easy theming support</li>
+                    <li>Co-location with components</li>
+                </ul>
+                
+                <h4>Styled Components Example:</h4>
+                <pre><code>import styled from 'styled-components';
+
+// Basic component
+const Button = styled.button`
+  background: ${props => props.primary ? '#3498db' : 'white'};
+  color: ${props => props.primary ? 'white' : '#3498db'};
+  padding: 0.5rem 1rem;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  cursor: pointer;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+`;
+
+// Extended component
+const LargeButton = styled(Button)`
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+`;
+
+// Usage
+&lt;Button&gt;Normal Button&lt;/Button&gt;
+&lt;Button primary&gt;Primary Button&lt;/Button&gt;
+&lt;LargeButton&gt;Large Button&lt;/LargeButton&gt;</code></pre>
+                
+                <h4>Popular CSS-in-JS Libraries:</h4>
+                <ul>
+                    <li><strong>Styled Components</strong> (React)</li>
+                    <li><strong>Emotion</strong> (Framework agnostic)</li>
+                    <li><strong>JSS</strong> (Low-level, framework agnostic)</li>
+                    <li><strong>Linaria</strong> (Zero-runtime CSS-in-JS)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Static Site Generators (Gatsby, Next.js)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>Tools that generate HTML pages at build time rather than on each request.</p>
+                
+                <h4>Benefits:</h4>
+                <ul>
+                    <li>Better performance (pre-built HTML)</li>
+                    <li>Improved security (no server-side processing)</li>
+                    <li>Easier hosting (can be served from CDN)</li>
+                    <li>Good SEO (pre-rendered content)</li>
+                </ul>
+                
+                <h4>Gatsby vs Next.js:</h4>
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Gatsby</th>
+                        <th>Next.js</th>
+                    </tr>
+                    <tr>
+                        <td>Primary Use Case</td>
+                        <td>Content-heavy sites</td>
+                        <td>Hybrid static/dynamic apps</td>
+                    </tr>
+                    <tr>
+                        <td>Data Sources</td>
+                        <td>GraphQL layer</td>
+                        <td>Any data fetching method</td>
+                    </tr>
+                    <tr>
+                        <td>Rendering</td>
+                        <td>Static only</td>
+                        <td>Static, SSR, or both</td>
+                    </tr>
+                    <tr>
+                        <td>Plugin Ecosystem</td>
+                        <td>Extensive</td>
+                        <td>Minimal</td>
+                    </tr>
+                </table>
+                
+                <h4>Gatsby Example:</h4>
+                <pre><code>// gatsby-config.js
+module.exports = {
+  plugins: [
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'posts',
+        path: `${__dirname}/src/posts`,
+      },
+    },
+    'gatsby-transformer-remark',
+  ],
+};
+
+// Page query example
+export const query = graphql`
+  query {
+    allMarkdownRemark {
+      edges {
+        node {
+          frontmatter {
+            title
+            date
+          }
+          html
+        }
+      }
+    }
+  }
+`;</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Server-Side Rendering (SSR)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>Rendering web pages on the server and sending fully rendered pages to the client.</p>
+                
+                <h4>Benefits:</h4>
+                <ul>
+                    <li>Better initial load performance</li>
+                    <li>Improved SEO (crawlers see full content)</li>
+                    <li>Consistent performance across devices</li>
+                    <li>Works without JavaScript</li>
+                </ul>
+                
+                <h4>SSR Process Flow:</h4>
+                <ol>
+                    <li>User requests a page</li>
+                    <li>Server fetches required data</li>
+                    <li>Server renders React/Vue components to HTML</li>
+                    <li>Fully rendered HTML sent to browser</li>
+                    <li>Browser loads JavaScript</li>
+                    <li>App "hydrates" (becomes interactive)</li>
+                </ol>
+                
+                <h4>Next.js SSR Example:</h4>
+                <pre><code>// pages/post/[id].js
+export async function getServerSideProps(context) {
+  const { id } = context.params;
+  const res = await fetch(`https://api.example.com/posts/${id}`);
+  const post = await res.json();
+
+  return {
+    props: { post }, // Will be passed to page component
+  };
+}
+
+function Post({ post }) {
+  return (
+    &lt;article&gt;
+      &lt;h1&gt;{post.title}&lt;/h1&gt;
+      &lt;div dangerouslySetInnerHTML={{ __html: post.content }} /&gt;
+    &lt;/article&gt;
+  );
+}
+
+export default Post;</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Client-Side Rendering (CSR)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>Rendering web pages entirely in the browser using JavaScript.</p>
+                
+                <h4>Benefits:</h4>
+                <ul>
+                    <li>Faster subsequent page loads</li>
+                    <li>Richer interactivity</li>
+                    <li>Better for web applications</li>
+                    <li>Less server load</li>
+                </ul>
+                
+                <h4>CSR Process Flow:</h4>
+                <ol>
+                    <li>Browser requests initial HTML</li>
+                    <li>Server sends minimal HTML with JavaScript</li>
+                    <li>Browser downloads and executes JavaScript</li>
+                    <li>JavaScript fetches data via API</li>
+                    <li>JavaScript renders content in browser</li>
+                </ol>
+                
+                <h4>React CSR Example:</h4>
+                <pre><code>import { useState, useEffect } from 'react';
+
+function Post({ postId }) {
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchPost() {
+      const res = await fetch(`https://api.example.com/posts/${postId}`);
+      const data = await res.json();
+      setPost(data);
+      setLoading(false);
+    }
+    
+    fetchPost();
+  }, [postId]);
+
+  if (loading) return &lt;div&gt;Loading...&lt;/div&gt;;
+  
+  return (
+    &lt;article&gt;
+      &lt;h1&gt;{post.title}&lt;/h1&gt;
+      &lt;p&gt;{post.content}&lt;/p&gt;
+    &lt;/article&gt;
+  );
+}</code></pre>
+                
+                <h4>SSR vs CSR Comparison:</h4>
+                <table>
+                    <tr>
+                        <th>Metric</th>
+                        <th>SSR</th>
+                        <th>CSR</th>
+                    </tr>
+                    <tr>
+                        <td>Initial Load</td>
+                        <td>Faster (pre-rendered)</td>
+                        <td>Slower (needs JS)</td>
+                    </tr>
+                    <tr>
+                        <td>Subsequent Navigation</td>
+                        <td>Full page reload</td>
+                        <td>Faster (client-side)</td>
+                    </tr>
+                    <tr>
+                        <td>SEO</td>
+                        <td>Better</td>
+                        <td>Worse (without SSR)</td>
+                    </tr>
+                    <tr>
+                        <td>Server Load</td>
+                        <td>Higher</td>
+                        <td>Lower</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>GraphQL (Efficient API Queries)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A query language for APIs that enables clients to request exactly the data they need.</p>
+                
+                <h4>GraphQL vs REST:</h4>
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th>GraphQL</th>
+                        <th>REST</th>
+                    </tr>
+                    <tr>
+                        <td>Data Fetching</td>
+                        <td>Single request for exact data</td>
+                        <td>Multiple endpoints</td>
+                    </tr>
+                    <tr>
+                        <td>Over/Under Fetching</td>
+                        <td>No - get only what you request</td>
+                        <td>Common issue</td>
+                    </tr>
+                    <tr>
+                        <td>Versioning</td>
+                        <td>No versioning needed</td>
+                        <td>Versioned endpoints</td>
+                    </tr>
+                    <tr>
+                        <td>Learning Curve</td>
+                        <td>Steeper</td>
+                        <td>Easier</td>
+                    </tr>
+                </table>
+                
+                <h4>GraphQL Query Example:</h4>
+                <pre><code># Query
+query GetUser($id: ID!) {
+  user(id: $id) {
+    name
+    email
+    posts {
+      title
+      comments {
+        text
+        author {
+          name
+        }
+      }
+    }
+  }
+}
+
+# Response
+{
+  "data": {
+    "user": {
+      "name": "John Doe",
+      "email": "john@example.com",
+      "posts": [
+        {
+          "title": "GraphQL Introduction",
+          "comments": [
+            {
+              "text": "Great post!",
+              "author": {
+                "name": "Jane Smith"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}</code></pre>
+                
+                <h4>Apollo Client Setup:</h4>
+                <pre><code>import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: 'https://api.example.com/graphql',
+  cache: new InMemoryCache()
+});
+
+// Execute query
+client.query({
+  query: gql`
+    query GetBooks {
+      books {
+        title
+        author
+      }
+    }
+  `
+}).then(result => console.log(result));</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>RESTful API Design</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>An architectural style for designing networked applications using HTTP protocols.</p>
+                
+                <h4>REST Principles:</h4>
+                <ul>
+                    <li><strong>Client-Server:</strong> Separation of concerns</li>
+                    <li><strong>Stateless:</strong> Each request contains all needed information</li>
+                    <li><strong>Cacheable:</strong> Responses define cacheability</li>
+                    <li><strong>Uniform Interface:</strong> Consistent resource identification</li>
+                    <li><strong>Layered System:</strong> Client unaware of intermediary layers</li>
+                </ul>
+                
+                <h4>HTTP Methods:</h4>
+                <table>
+                    <tr>
+                        <th>Method</th>
+                        <th>Action</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>Retrieve resource</td>
+                        <td>/users/123</td>
+                    </tr>
+                    <tr>
+                        <td>POST</td>
+                        <td>Create resource</td>
+                        <td>/users</td>
+                    </tr>
+                    <tr>
+                        <td>PUT</td>
+                        <td>Replace resource</td>
+                        <td>/users/123</td>
+                    </tr>
+                    <tr>
+                        <td>PATCH</td>
+                        <td>Update resource partially</td>
+                        <td>/users/123</td>
+                    </tr>
+                    <tr>
+                        <td>DELETE</td>
+                        <td>Remove resource</td>
+                        <td>/users/123</td>
+                    </tr>
+                </table>
+                
+                <h4>Best Practices:</h4>
+                <ul>
+                    <li>Use nouns (not verbs) in endpoints (/users not /getUsers)</li>
+                    <li>Use plural nouns for collections (/users)</li>
+                    <li>Use HTTP status codes appropriately</li>
+                    <li>Version your API (/v1/users)</li>
+                    <li>Use query parameters for filtering (/users?active=true)</li>
+                    <li>Provide consistent response formats</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>WebSockets (Real-Time Apps)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A communication protocol providing full-duplex communication channels over a single TCP connection.</p>
+                
+                <h4>Use Cases:</h4>
+                <ul>
+                    <li>Real-time chat applications</li>
+                    <li>Live notifications</li>
+                    <li>Multiplayer games</li>
+                    <li>Collaborative editing tools</li>
+                    <li>Live sports updates</li>
+                </ul>
+                
+                <h4>WebSocket API Example:</h4>
+                <pre><code>// Client-side
+const socket = new WebSocket('wss://example.com/socket');
+
+socket.onopen = () => {
+  console.log('Connected to server');
+  socket.send('Hello Server!');
+};
+
+socket.onmessage = (event) => {
+  console.log('Message from server:', event.data);
+};
+
+socket.onclose = () => {
+  console.log('Disconnected from server');
+};
+
+// Server-side (Node.js with ws library)
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({ port: 8080 });
+
+wss.on('connection', (ws) => {
+  ws.on('message', (message) => {
+    console.log('Received:', message);
+    ws.send('Hello Client!');
+  });
+});</code></pre>
+                
+                <h4>Socket.io Example (with rooms):</h4>
+                <pre><code>// Server
+const io = require('socket.io')(3000);
+
+io.on('connection', (socket) => {
+  socket.on('join-room', (roomId) => {
+    socket.join(roomId);
+    socket.to(roomId).emit('user-connected', socket.id);
+  });
+  
+  socket.on('send-message', (roomId, message) => {
+    socket.to(roomId).emit('receive-message', message);
+  });
+});
+
+// Client
+const socket = io('http://localhost:3000');
+socket.emit('join-room', 'room1');
+
+function sendMessage() {
+  socket.emit('send-message', 'room1', 'Hello room!');
+}</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Web Workers (Background Processing)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>JavaScript scripts that run in background threads, separate from the main execution thread.</p>
+                
+                <h4>Use Cases:</h4>
+                <ul>
+                    <li>CPU-intensive calculations</li>
+                    <li>Image/video processing</li>
+                    <li>Large dataset processing</li>
+                    <li>Complex algorithms</li>
+                    <li>Prefetching and caching data</li>
+                </ul>
+                
+                <h4>Basic Example:</h4>
+                <pre><code>// main.js
+const worker = new Worker('worker.js');
+
+worker.postMessage('Start processing');
+
+worker.onmessage = (event) => {
+  console.log('Result:', event.data);
+};
+
+// worker.js
+self.onmessage = (event) => {
+  console.log('Message from main:', event.data);
+  
+  // Simulate heavy processing
+  const result = heavyCalculation();
+  
+  self.postMessage(result);
+};
+
+function heavyCalculation() {
+  let sum = 0;
+  for (let i = 0; i < 1e9; i++) {
+    sum += Math.sqrt(i);
+  }
+  return sum;
+}</code></pre>
+                
+                <h4>Shared Worker Example:</h4>
+                <pre><code>// main.js
+const worker = new SharedWorker('shared-worker.js');
+
+worker.port.onmessage = (event) => {
+  console.log('Message from worker:', event.data);
+};
+
+worker.port.postMessage('Hello shared worker!');
+
+// shared-worker.js
+const connections = [];
+
+self.onconnect = (event) => {
+  const port = event.ports[0];
+  connections.push(port);
+  
+  port.onmessage = (event) => {
+    connections.forEach(conn => {
+      if (conn !== port) {
+        conn.postMessage(event.data);
+      }
+    });
+  };
+};</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Service Workers (Offline Functionality)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A client-side proxy that lets you intercept network requests and cache responses.</p>
+                
+                <h4>Capabilities:</h4>
+                <ul>
+                    <li>Offline content caching</li>
+                    <li>Background sync</li>
+                    <li>Push notifications</li>
+                    <li>Network request interception</li>
+                </ul>
+                
+                <h4>Service Worker Lifecycle:</h4>
+                <ol>
+                    <li><strong>Registration:</strong> Browser downloads and registers SW</li>
+                    <li><strong>Installation:</strong> Cache assets during install event</li>
+                    <li><strong>Activation:</strong> Cleans up old caches</li>
+                    <li><strong>Idle:</strong> Handles fetch events</li>
+                    <li><strong>Termination:</strong> When no longer needed</li>
+                </ol>
+                
+                <h4>Basic Service Worker:</h4>
+                <pre><code>// Register in main app
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js')
+    .then(registration => {
+      console.log('SW registered');
+    });
+}
+
+// sw.js
+const CACHE_NAME = 'my-cache-v1';
+const urlsToCache = [
+  '/',
+  '/styles/main.css',
+  '/scripts/main.js'
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(urlsToCache))
+  );
+});
+
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => response || fetch(event.request))
+  );
+});</code></pre>
+                
+                <h4>Advanced Caching Strategies:</h4>
+                <pre><code>// Cache with network fallback
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => response || fetchAndCache(event.request))
+  );
+});
+
+async function fetchAndCache(request) {
+  const response = await fetch(request);
+  const cache = await caches.open('dynamic-cache');
+  cache.put(request, response.clone());
+  return response;
+}
+
+// Network with cache fallback
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    fetch(event.request).catch(() => caches.match(event.request))
+  );
+});</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Motion UI & Micro-Interactions</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>Subtle animations and transitions that enhance user experience and provide feedback.</p>
+                
+                <h4>Best Practices:</h4>
+                <ul>
+                    <li>Keep animations short (200-500ms)</li>
+                    <li>Use easing functions (not linear)</li>
+                    <li>Be purposeful (don't animate just for fun)</li>
+                    <li>Ensure accessibility (reduce motion options)</li>
+                </ul>
+                
+                <h4>CSS Animation Example:</h4>
+                <pre><code>/* Button micro-interaction */
+.button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}</code></pre>
+                
+                <h4>React Animation Example (Framer Motion):</h4>
+                <pre><code>import { motion } from 'framer-motion';
+
+function AnimatedComponent() {
+  return (
+    &lt;motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+    &gt;
+      Interactive Content
+    &lt;/motion.div&gt;
+  );
+}</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Dark Mode Implementation</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>A color scheme that uses light-colored text and interface elements on a dark background.</p>
+                
+                <h4>Implementation Approaches:</h4>
+                <div class="two-column">
+                    <div>
+                        <h5>CSS Custom Properties:</h5>
+                        <pre><code>:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --primary-color: #3498db;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #f5f5f5;
+  --primary-color: #1e88e5;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+}</code></pre>
+                    </div>
+                    <div>
+                        <h5>CSS prefers-color-scheme:</h5>
+                        <pre><code>@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #121212;
+    --text-color: #f5f5f5;
+  }
+}</code></pre>
+                    </div>
+                </div>
+                
+                <h4>React Implementation:</h4>
+                <pre><code>import React, { useState, useEffect } from 'react';
+
+function App() {
+  const [darkMode, setDarkMode] = useState(false);
+  
+  useEffect(() => {
+    // Apply class to body
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+    
+    // Save preference to localStorage
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
+  
+  // Check for saved preference or system preference
+  useEffect(() => {
+    const savedMode = localStorage.getItem('darkMode');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    setDarkMode(savedMode ? JSON.parse(savedMode) : systemPrefersDark);
+  }, []);
+
+  return (
+    &lt;button onClick={() => setDarkMode(!darkMode)}&gt;
+      Toggle Dark Mode
+    &lt;/button&gt;
+  );
+}</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Internationalization (i18n) & Localization (L10n)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>i18n is designing software to support multiple languages, while L10n is adapting it for a specific region.</p>
+                
+                <h4>Implementation Steps:</h4>
+                <ol>
+                    <li>Extract all UI strings from code</li>
+                    <li>Create translation files for each language</li>
+                    <li>Implement language switching</li>
+                    <li>Handle locale-specific formatting (dates, numbers)</li>
+                    <li>Test RTL (Right-to-Left) languages if needed</li>
+                </ol>
+                
+                <h4>React i18n Example (react-i18next):</h4>
+                <pre><code>// i18n.js
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+
+i18n.use(initReactI18next).init({
+  resources: {
+    en: {
+      translation: {
+        welcome: 'Welcome',
+        button: {
+          submit: 'Submit'
+        }
+      }
+    },
+    fr: {
+      translation: {
+        welcome: 'Bienvenue',
+        button: {
+          submit: 'Soumettre'
+        }
+      }
+    }
+  },
+  lng: 'en',
+  fallbackLng: 'en'
+});
+
+export default i18n;
+
+// App.js
+import { useTranslation } from 'react-i18next';
+
+function App() {
+  const { t, i18n } = useTranslation();
+  
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;{t('welcome')}&lt;/h1&gt;
+      &lt;button onClick={() => changeLanguage('en')}&gt;English&lt;/button&gt;
+      &lt;button onClick={() => changeLanguage('fr')}&gt;Français&lt;/button&gt;
+      &lt;button&gt;{t('button.submit')}&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                
+                <h4>Locale-Specific Formatting:</h4>
+                <pre><code>// Date formatting
+new Date().toLocaleDateString('en-US'); // "1/2/2023"
+new Date().toLocaleDateString('de-DE'); // "2.1.2023"
+
+// Number formatting
+(123456.789).toLocaleString('en-US'); // "123,456.789"
+(123456.789).toLocaleString('fr-FR'); // "123 456,789"
+
+// Currency formatting
+(1234.56).toLocaleString('en-US', {
+  style: 'currency',
+  currency: 'USD'
+}); // "$1,234.56"
+
+(1234.56).toLocaleString('ja-JP', {
+  style: 'currency',
+  currency: 'JPY'
+}); // "￥1,235"</code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <div class="video-resource">
+        <h3>Video Explanation</h3>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/XF1_MlZ5l6M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</section>
+
+
+<section id="performance" class="content-section">
+    <h2>Performance & Optimization</h2>
+    <p class="section-intro">Techniques and strategies to improve application speed, efficiency, and resource utilization.</p>
+    
+    <div class="accordion">
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Lazy Loading Images</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>Deferring image loading until they're needed (when they enter the viewport).</p>
+                
+                <h4>Implementation Methods:</h4>
+                <div class="two-column">
+                    <div>
+                        <h5>Native Lazy Loading:</h5>
+                        <pre><code>&lt;img src="image.jpg" loading="lazy" 
+     alt="Example" width="800" height="600"&gt;</code></pre>
+                        <p>Supported in modern browsers</p>
+                    </div>
+                    <div>
+                        <h5>Intersection Observer API:</h5>
+                        <pre><code>const images = document.querySelectorAll('img[data-src]');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const img = entry.target;
+      img.src = img.dataset.src;
+      observer.unobserve(img);
+    }
+  });
+});
+
+images.forEach(img => observer.observe(img));</code></pre>
+                    </div>
+                </div>
+                
+                <h4>React Example (react-lazyload):</h4>
+                <pre><code>import LazyLoad from 'react-lazyload';
+
+function MyComponent() {
+  return (
+    &lt;div&gt;
+      &lt;LazyLoad height={200} offset={100}&gt;
+        &lt;img src="large-image.jpg" alt="Lazy loaded" /&gt;
+      &lt;/LazyLoad&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Code Splitting</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>Breaking your application into smaller bundles that can be loaded on demand.</p>
+                
+                <h4>Approaches:</h4>
+                <div class="optimization-grid">
+                    <div>
+                        <h5>Route-based (React Router):</h5>
+                        <pre><code>const Home = React.lazy(() => import('./Home'));
+const About = React.lazy(() => import('./About'));
+
+function App() {
+  return (
+    &lt;Suspense fallback={&lt;Spinner /&gt;}&gt;
+      &lt;Routes&gt;
+        &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+        &lt;Route path="/about" element={&lt;About /&gt;} /&gt;
+      &lt;/Routes&gt;
+    &lt;/Suspense&gt;
+  );
+}</code></pre>
+                    </div>
+                    <div>
+                        <h5>Component-based:</h5>
+                        <pre><code>const HeavyComponent = React.lazy(() => 
+  import('./HeavyComponent').then(module => ({
+    default: module.HeavyComponent
+  }))
+);
+
+function MyComponent() {
+  const [showHeavy, setShowHeavy] = useState(false);
+  
+  return (
+    &lt;div&gt;
+      &lt;button onClick={() => setShowHeavy(true)}&gt;
+        Load Heavy Component
+      &lt;/button&gt;
+      {showHeavy && (
+        &lt;Suspense fallback={&lt;div&gt;Loading...&lt;/div&gt;}&gt;
+          &lt;HeavyComponent /&gt;
+        &lt;/Suspense&gt;
+      )}
+    &lt;/div&gt;
+  );
+}</code></pre>
+                    </div>
+                </div>
+                
+                <h4>Webpack Dynamic Imports:</h4>
+                <pre><code>// Before
+import { add } from './math';
+add(2, 3);
+
+// After (code-split)
+import("./math").then(math => {
+  math.add(2, 3);
+});</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Critical Rendering Path Optimization</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>Minimizing the steps between receiving HTML/CSS/JS and rendering pixels to the screen.</p>
+                
+                <h4>Optimization Techniques:</h4>
+                <div class="crp-grid">
+                    <div>
+                        <h5>1. Minimize Critical Resources:</h5>
+                        <ul>
+                            <li>Inline critical CSS</li>
+                            <li>Defer non-critical CSS</li>
+                            <li>Minimize JavaScript</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5>2. Reduce Bytes:</h5>
+                        <ul>
+                            <li>Minify and compress</li>
+                            <li>Use efficient formats (WebP)</li>
+                            <li>Remove unused code</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5>3. Optimize Load Order:</h5>
+                        <ul>
+                            <li>Async/defer scripts</li>
+                            <li>Preload key requests</li>
+                            <li>Resource hints (dns-prefetch)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h4>HTML Example:</h4>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    /* Inlined critical CSS */
+    body { font-family: sans-serif; }
+    .header { color: #333; }
+  &lt;/style&gt;
+  &lt;link rel="preload" href="styles.css" as="style"&gt;
+  &lt;link rel="preconnect" href="https://fonts.gstatic.com"&gt;
+  &lt;script defer src="app.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Content --&gt;
+  &lt;link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'"&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>GPU Acceleration (CSS Transforms)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>Offloading animations and rendering to the GPU for smoother performance.</p>
+                
+                <h4>GPU-Accelerated Properties:</h4>
+                <ul>
+                    <li><code>transform: translate3d()</code></li>
+                    <li><code>transform: scale3d()</code></li>
+                    <li><code>transform: rotate3d()</code></li>
+                    <li><code>opacity</code></li>
+                    <li><code>filter</code></li>
+                    <li><code>will-change</code></li>
+                </ul>
+                
+                <h4>Implementation Example:</h4>
+                <pre><code>/* Good (GPU accelerated) */
+.animate {
+  transform: translateZ(0); /* Hack to trigger GPU */
+  transition: transform 0.3s ease-out;
+}
+
+.animate:hover {
+  transform: scale(1.05);
+}
+
+/* Bad (CPU intensive) */
+.animate {
+  left: 0;
+  transition: left 0.3s ease-out;
+}
+
+.animate:hover {
+  left: 10px;
+}</code></pre>
+                
+                <h4>Best Practices:</h4>
+                <ul>
+                    <li>Use <code>transform</code> and <code>opacity</code> for animations</li>
+                    <li>Limit layers (too many can cause memory issues)</li>
+                    <li>Use <code>will-change</code> sparingly</li>
+                    <li>Test on mobile devices</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Debouncing & Throttling (Event Handling)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>Techniques to control how often a function is executed during frequent events.</p>
+                
+                <h4>Debouncing vs Throttling:</h4>
+                <table>
+                    <tr>
+                        <th>Technique</th>
+                        <th>Description</th>
+                        <th>Use Case</th>
+                    </tr>
+                    <tr>
+                        <td>Debouncing</td>
+                        <td>Executes after a delay when events stop</td>
+                        <td>Search input, window resize</td>
+                    </tr>
+                    <tr>
+                        <td>Throttling</td>
+                        <td>Executes at most once per time period</td>
+                        <td>Scroll events, mouse movement</td>
+                    </tr>
+                </table>
+                
+                <h4>Implementation:</h4>
+                <div class="two-column">
+                    <div>
+                        <h5>Debounce:</h5>
+                        <pre><code>function debounce(func, delay) {
+  let timeout;
+  return function() {
+    const context = this;
+    const args = arguments;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(context, args), delay);
+  };
+}
+
+// Usage
+window.addEventListener('resize', debounce(() => {
+  console.log('Resized');
+}, 200));</code></pre>
+                    </div>
+                    <div>
+                        <h5>Throttle:</h5>
+                        <pre><code>function throttle(func, limit) {
+  let lastFunc;
+  let lastRan;
+  return function() {
+    const context = this;
+    const args = arguments;
+    if (!lastRan) {
+      func.apply(context, args);
+      lastRan = Date.now();
+    } else {
+      clearTimeout(lastFunc);
+      lastFunc = setTimeout(() => {
+        if ((Date.now() - lastRan) >= limit) {
+          func.apply(context, args);
+          lastRan = Date.now();
+        }
+      }, limit - (Date.now() - lastRan));
+    }
+  };
+}
+
+// Usage
+window.addEventListener('scroll', throttle(() => {
+  console.log('Scrolling');
+}, 100));</code></pre>
+                    </div>
+                </div>
+                
+                <h4>Lodash Example:</h4>
+                <pre><code>import { debounce, throttle } from 'lodash';
+
+// Debounce search input
+const searchInput = document.getElementById('search');
+searchInput.addEventListener('input', debounce(() => {
+  // Perform search
+}, 300));
+
+// Throttle scroll event
+window.addEventListener('scroll', throttle(() => {
+  // Update UI
+}, 100));</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Memory Leak Prevention</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>Identifying and fixing situations where memory isn't released when no longer needed.</p>
+                
+                <h4>Common Memory Leak Sources:</h4>
+                <ul>
+                    <li>Forgotten timers/intervals</li>
+                    <li>Detached DOM elements</li>
+                    <li>Closures holding references</li>
+                    <li>Event listeners not removed</li>
+                    <li>Global variables</li>
+                </ul>
+                
+                <h4>Detection Tools:</h4>
+                <ul>
+                    <li>Chrome DevTools Memory panel</li>
+                    <li>Heap snapshots</li>
+                    <li>Allocation timeline</li>
+                    <li>Node.js <code>--inspect</code> flag</li>
+                </ul>
+                
+                <h4>Prevention Examples:</h4>
+                <div class="two-column">
+                    <div>
+                        <h5>React:</h5>
+                        <pre><code>useEffect(() => {
+  const controller = new AbortController();
+  
+  fetch(url, { signal: controller.signal })
+    .then(/* ... */);
+    
+  // Cleanup function
+  return () => controller.abort();
+}, []);</code></pre>
+                    </div>
+                    <div>
+                        <h5>Vanilla JS:</h5>
+                        <pre><code>// Store references
+const elements = {
+  button: document.getElementById('myButton'),
+  handler: () => console.log('Clicked')
+};
+
+// Add listener
+elements.button.addEventListener('click', elements.handler);
+
+// Later, clean up
+function cleanup() {
+  elements.button.removeEventListener('click', elements.handler);
+  elements.button = null;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Bundle Size Reduction (Tree Shaking)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>Eliminating unused code from your final bundle through static analysis.</p>
+                
+                <h4>Tree Shaking Techniques:</h4>
+                <ul>
+                    <li>Use ES6 modules (<code>import/export</code>)</li>
+                    <li>Configure bundler (Webpack/Rollup)</li>
+                    <li>Analyze bundle (Webpack Bundle Analyzer)</li>
+                    <li>Code splitting</li>
+                </ul>
+                
+                <h4>Webpack Configuration:</h4>
+                <pre><code>// webpack.config.js
+module.exports = {
+  mode: 'production', // Enables tree shaking
+  optimization: {
+    usedExports: true,
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+    splitChunks: {
+      chunks: 'all'
+    }
+  }
+};</code></pre>
+                
+                <h4>Import Best Practices:</h4>
+                <pre><code>// Bad (imports entire library)
+import _ from 'lodash';
+_.debounce(/* ... */);
+
+// Good (imports only needed function)
+import debounce from 'lodash/debounce';
+debounce(/* ... */);
+
+// Better (with tree-shaking support)
+import { debounce } from 'lodash-es';
+debounce(/* ... */);</code></pre>
+                
+                <h4>Bundle Analysis Tools:</h4>
+                <ul>
+                    <li>Webpack Bundle Analyzer</li>
+                    <li>Source Map Explorer</li>
+                    <li>Rollup Visualizer</li>
+                    <li>Parcel Bundle Analyzer</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Caching Strategies</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>Storing frequently accessed data to improve performance and reduce load.</p>
+                
+                <h4>Caching Layers:</h4>
+                <div class="caching-grid">
+                    <div>
+                        <h5>1. Browser Caching:</h5>
+                        <ul>
+                            <li>HTTP Cache Headers</li>
+                            <li>Service Workers</li>
+                            <li>LocalStorage/SessionStorage</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5>2. CDN Caching:</h5>
+                        <ul>
+                            <li>Edge caching</li>
+                            <li>Cache invalidation</li>
+                            <li>Geo-distribution</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5>3. Server-Side Caching:</h5>
+                        <ul>
+                            <li>Redis/Memcached</li>
+                            <li>Database query caching</li>
+                            <li>Full-page caching</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h4>HTTP Cache Headers:</h4>
+                <pre><code>// Strong caching (1 year)
+Cache-Control: public, max-age=31536000, immutable
+
+// Negotiation caching
+Cache-Control: no-cache
+ETag: "33a64df551425fcc55e4d42a148795d9f25f89d4"
+
+// No caching
+Cache-Control: no-store, no-cache, must-revalidate</code></pre>
+                
+                <h4>Service Worker Caching Strategies:</h4>
+                <pre><code>// Cache-First
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => response || fetch(event.request))
+  );
+});
+
+// Network-First
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    fetch(event.request)
+      .catch(() => caches.match(event.request))
+  );
+});
+
+// Stale-While-Revalidate
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(cached => {
+        const fetched = fetch(event.request)
+          .then(response => {
+            caches.open('dynamic-cache')
+              .then(cache => cache.put(event.request, response));
+          });
+        return cached || fetched;
+      })
+  );
+});</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Database Indexing</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>Creating data structures that improve the speed of data retrieval operations.</p>
+                
+                <h4>Indexing Best Practices:</h4>
+                <ul>
+                    <li>Index columns used in WHERE clauses</li>
+                    <li>Index columns used in JOINs</li>
+                    <li>Consider composite indexes for multi-column queries</li>
+                    <li>Avoid over-indexing (slows writes)</li>
+                    <li>Monitor query performance</li>
+                </ul>
+                
+                <h4>SQL Examples:</h4>
+                <div class="two-column">
+                    <div>
+                        <h5>Creating Indexes:</h5>
+                        <pre><code>-- Single column index
+CREATE INDEX idx_users_email ON users(email);
+
+-- Composite index
+CREATE INDEX idx_orders_user_date ON orders(user_id, order_date);
+
+-- Unique index
+CREATE UNIQUE INDEX idx_products_sku ON products(sku);</code></pre>
+                    </div>
+                    <div>
+                        <h5>Query Analysis:</h5>
+                        <pre><code>-- Explain query execution plan
+EXPLAIN SELECT * FROM users WHERE email = 'test@example.com';
+
+-- Show indexes
+SHOW INDEX FROM users;
+
+-- Force index usage
+SELECT * FROM users FORCE INDEX (idx_users_email) 
+WHERE email = 'test@example.com';</code></pre>
+                    </div>
+                </div>
+                
+                <h4>NoSQL Indexing (MongoDB):</h4>
+                <pre><code>// Create index
+db.users.createIndex({ email: 1 }); // 1 for ascending
+
+// Compound index
+db.orders.createIndex({ user_id: 1, order_date: -1 });
+
+// Text index for search
+db.articles.createIndex({ content: "text" });
+
+// Explain query
+db.users.find({ email: 'test@example.com' }).explain();</code></pre>
+            </div>
+        </div>
+        
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <h3>Load Balancing (Server-Side)</h3>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+                <p>Distributing network traffic across multiple servers to optimize resource use.</p>
+                
+                <h4>Load Balancing Algorithms:</h4>
+                <table>
+                    <tr>
+                        <th>Algorithm</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>Round Robin</td>
+                        <td>Requests distributed sequentially</td>
+                    </tr>
+                    <tr>
+                        <td>Least Connections</td>
+                        <td>Request to server with fewest active connections</td>
+                    </tr>
+                    <tr>
+                        <td>IP Hash</td>
+                        <td>Client IP determines server selection</td>
+                    </tr>
+                    <tr>
+                        <td>Weighted</td>
+                        <td>Servers receive traffic based on assigned weights</td>
+                    </tr>
+                </table>
+                
+                <h4>Load Balancing Solutions:</h4>
+                <div class="two-column">
+                    <div>
+                        <h5>Software:</h5>
+                        <ul>
+                            <li>NGINX</li>
+                            <li>HAProxy</li>
+                            <li>Apache HTTP Server</li>
+                            <li>Traefik</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5>Cloud Services:</h5>
+                        <ul>
+                            <li>AWS ELB/ALB</li>
+                            <li>Google Cloud Load Balancing</li>
+                            <li>Azure Load Balancer</li>
+                            <li>Cloudflare Load Balancing</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h4>NGINX Configuration Example:</h4>
+                <pre><code>http {
+  upstream backend {
+    # Least connected strategy
+    least_conn;
+    
+    # Server list
+    server backend1.example.com weight=3;
+    server backend2.example.com;
+    server backend3.example.com;
+    
+    # Health checks
+    check interval=5000 rise=2 fall=3 timeout=1000;
+  }
+
+  server {
+    listen 80;
+    
+    location / {
+      proxy_pass http://backend;
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+    }
+  }
+}</code></pre>
+                
+                <h4>Session Persistence:</h4>
+                <p>Techniques to ensure user sessions remain with the same server:</p>
+                <ul>
+                    <li>Sticky sessions (cookie-based routing)</li>
+                    <li>Database-backed sessions</li>
+                    <li>Distributed cache (Redis) for session storage</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="video-resource">
+        <h3>Video Explanation</h3>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/YJGCZCaIZkQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 DevMastery. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
