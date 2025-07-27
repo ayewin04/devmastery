@@ -70,3 +70,32 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('nav a').classList.add('active');
     }
 });
+// Update your JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+  const navLinks = document.querySelectorAll('nav a');
+  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  const nav = document.querySelector('nav');
+  
+  // Toggle mobile menu
+  menuToggle.innerHTML = '<i class="fas fa-bars"></i><i class="fas fa-times"></i>';
+  
+  menuToggle.addEventListener('click', function() {
+    nav.classList.toggle('active');
+  });
+  
+  // Close menu when a link is clicked
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      if (window.innerWidth <= 768) {
+        nav.classList.remove('active');
+        // Small delay to allow the menu to close before scrolling
+        setTimeout(() => {
+          window.scrollTo({
+            top: document.querySelector('header').offsetHeight,
+            behavior: 'smooth'
+          });
+        }, 300);
+      }
+    });
+  });
+});

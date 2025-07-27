@@ -671,3 +671,46 @@ footer p {
         grid-template-columns: 1fr;
     }
 }
+/* Update your existing mobile styles */
+@media (max-width: 768px) {
+  nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  
+  nav ul {
+    flex-direction: column;
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  /* Show close icon when nav is open */
+  nav.active + .mobile-menu-toggle .fa-bars {
+    display: none;
+  }
+  
+  nav.active + .mobile-menu-toggle .fa-times {
+    display: block;
+  }
+  
+  .mobile-menu-toggle .fa-times {
+    display: none;
+  }
+}
