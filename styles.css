@@ -715,7 +715,7 @@ footer p {
   }
 }
 
-/* Mobile Menu Styles */
+/* Remove the duplicate .mobile-menu-toggle style */
 .mobile-menu-toggle {
   display: none;
   position: fixed;
@@ -733,12 +733,6 @@ footer p {
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-@media (min-width: 769px) {
-  .mobile-menu-toggle {
-    display: none;
-  }
 }
 
 @media (max-width: 768px) {
@@ -771,5 +765,20 @@ footer p {
   
   .mobile-menu-toggle {
     display: flex;
+  }
+  
+  /* Hide the bars icon when nav is active */
+  nav.active ~ .mobile-menu-toggle .fa-bars {
+    display: none;
+  }
+  
+  /* Show the times icon when nav is active */
+  nav.active ~ .mobile-menu-toggle .fa-times {
+    display: block;
+  }
+  
+  /* Initially hide the times icon */
+  .mobile-menu-toggle .fa-times {
+    display: none;
   }
 }

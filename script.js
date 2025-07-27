@@ -106,14 +106,24 @@ document.addEventListener('DOMContentLoaded', function() {
   const contentSections = document.querySelectorAll('.content-section');
   const menuToggle = document.querySelector('.mobile-menu-toggle');
   const nav = document.querySelector('nav');
+  
+  // Initialize menu toggle icons
   const menuIcon = menuToggle.querySelector('.fa-bars');
   const closeIcon = menuToggle.querySelector('.fa-times');
+  closeIcon.style.display = 'none';
   
   // Toggle mobile menu
   menuToggle.addEventListener('click', function() {
     nav.classList.toggle('active');
-    menuIcon.style.display = nav.classList.contains('active') ? 'none' : 'block';
-    closeIcon.style.display = nav.classList.contains('active') ? 'block' : 'none';
+    
+    // Toggle icon visibility
+    if (nav.classList.contains('active')) {
+      menuIcon.style.display = 'none';
+      closeIcon.style.display = 'block';
+    } else {
+      menuIcon.style.display = 'block';
+      closeIcon.style.display = 'none';
+    }
   });
   
   // Navigation functionality
